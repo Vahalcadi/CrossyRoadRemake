@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestZone1
   m_EditorClassIdentifier: 
   terrain: {fileID: 6299997971487989881, guid: 31e0b4df13194f74a8fed6231a8ec4a6, type: 3}
-  dieOnWater: 0
+  dieOnWater: 1

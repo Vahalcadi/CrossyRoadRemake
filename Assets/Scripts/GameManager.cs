@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     private Vector3 currentPos = new Vector3(0, 0, 0);
 
+    [SerializeField] private Player player;
+
+    private bool canSpawnTerrain;
+
     private List<GameObject> gameObjects = new();
     private int count;
     public int terrainLimit;
@@ -36,8 +40,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && canSpawnTerrain)
         {
+            canSpawnTerrain = false;
+
             SpawnTerrain();
             if (count >= terrainLimit)
             {
@@ -60,4 +66,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void CanSpawnTerrain() => canSpawnTerrain = true;
 }

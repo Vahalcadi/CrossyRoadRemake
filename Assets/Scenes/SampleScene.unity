@@ -829,6 +829,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ac0b2ef65dc7448bea22e5eece8656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  resumeButton: {fileID: 0}
+  restartButton: {fileID: 0}
+  camera: {fileID: 1975560346}
   player: {fileID: 467071190}
   terrainLimit: 30
   InitialTerrainCount: 30

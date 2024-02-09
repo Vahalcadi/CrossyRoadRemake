@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
         if (player.hasMoved)
         {
             StartCoroutine(Move());
-            transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);         
+            transform.position = new Vector3(player.transform.position.x + 2.5f, transform.position.y, transform.position.z);         
         }
     }
 

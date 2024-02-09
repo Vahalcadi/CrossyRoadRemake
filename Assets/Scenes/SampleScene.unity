@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1312,8 +1312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ec24e89db51e74ab7bae1c88211c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 467071189}
   player: {fileID: 467071190}
   speed: 1
+  cameraScrollingOnPlayerMovement: 17
 --- !u!1 &2052122280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,9 +1425,9 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 467071189}
-  - {fileID: 330585546}
-  - {fileID: 1975560346}
   - {fileID: 1282695629}
   - {fileID: 2052122284}
   - {fileID: 482776752}
   - {fileID: 1580175196}
+  - {fileID: 330585546}
+  - {fileID: 1975560346}

@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] private Transform playerTransform;
     [SerializeField] private Player player;
     [SerializeField] private float speed;
+   
+    [SerializeField] private float cameraScrollingOnPlayerMovement = 6f; 
+    
     private bool activeCoroutine;
-
-
 
     private void Update()
     {
@@ -26,7 +28,7 @@ public class CameraMovement : MonoBehaviour
             {
                 yield return null;
                 activeCoroutine = true;
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * Time.deltaTime);
+                transform.position = new Vector3(transform.position.x, transform.position.y,Mathf.Max(playerTransform.position.z - cameraScrollingOnPlayerMovement, transform.position.z + speed * Time.deltaTime));
             }
         }
     }

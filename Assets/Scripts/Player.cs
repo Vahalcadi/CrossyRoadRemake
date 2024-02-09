@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
             isHopping = true;
 
-            playerMesh.transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z + 5));
+            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z + 5));
 
             anim.SetTrigger("hopTrigger");
 
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         {
             isHopping = true;
 
-            playerMesh.transform.LookAt(new Vector3(transform.position.x - 5, transform.position.y, transform.position.z));
+            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x - 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
 
             anim.SetTrigger("hopTrigger");
 
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         {
             isHopping = true;
 
-            playerMesh.transform.LookAt(new Vector3(transform.position.x, transform.position.y, transform.position.z - 5));
+            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z - 5));
 
             anim.SetTrigger("hopTrigger");
 
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         {
             isHopping = true;
 
-            playerMesh.transform.LookAt(new Vector3(transform.position.x + 5, transform.position.y, transform.position.z));
+            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x + 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
 
             anim.SetTrigger("hopTrigger");
 

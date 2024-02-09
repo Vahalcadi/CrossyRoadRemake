@@ -53,10 +53,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
-            updateGamePause();
+            UpdateGamePause();
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && canSpawnTerrain)
         if (Input.GetKeyUp(KeyCode.W) && canSpawnTerrain)
         {
             canSpawnTerrain = false;
@@ -91,14 +90,14 @@ public class GameManager : MonoBehaviour
     public void CanSpawnTerrain() => canSpawnTerrain = true;
     private void GameOverConditions()
     {
-        if (player.transform.position.z < camera.transform.position.z)
+        if (player.transform.position.z + 4 < camera.transform.position.z)
         {
             isOver = true;
             Time.timeScale = 0;
             GameOverMenu();
         }           
     }
-    public void updateGamePause()
+    public void UpdateGamePause()
     {
         if (isPaused && !isOver)
         {
@@ -109,7 +108,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
-    private void resuneMenu()
+    private void ResuneMenu()
     {
         pauseMenu.SetActive(true);
         resumeButton.SetActive(true);

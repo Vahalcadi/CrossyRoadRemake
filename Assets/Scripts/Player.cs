@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {       
-        if (Input.GetKeyDown(KeyCode.W) && !isHopping)
+        if (Input.GetKeyUp(KeyCode.W) && !isHopping)
         {
             GameManager.Instance.CanSpawnTerrain();
 
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveOnZ);
             hasMoved = true;
         }
-        else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.A) && !isHopping)
         {
             isHopping = true;
 
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x - moveOnX, transform.position.y, transform.position.z);
             hasMoved = true;
         }
-        else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.S) && !isHopping)
         {
             isHopping = true;
 
@@ -61,8 +61,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveOnZ);
             hasMoved = true;
         }
-
-        else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.D) && !isHopping)
         {
             isHopping = true;
 

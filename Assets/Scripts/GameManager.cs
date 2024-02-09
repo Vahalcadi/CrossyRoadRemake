@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.W) && canSpawnTerrain)
+        if (Input.GetKeyUp(KeyCode.W) && canSpawnTerrain)
         {
             canSpawnTerrain = false;
 

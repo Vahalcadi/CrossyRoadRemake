@@ -733,7 +733,8 @@ MonoBehaviour:
   terrainLimit: 30
   InitialTerrainCount: 30
   terrains:
-  - {fileID: 11400000, guid: 0248e7b98594c3741805b8f05a6b60ae, type: 2}
+  - {fileID: 11400000, guid: d7374082d8682224da366fbe6f9f6661, type: 2}
+  - {fileID: 11400000, guid: 825f80fad5b5a444eb5a96f1ee3f166e, type: 2}
 --- !u!1 &1572032664
 GameObject:
   m_ObjectHideFlags: 0

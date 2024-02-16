@@ -996,8 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1143213872}
-  buttonRestart: {fileID: 0}
-  restartButton: {fileID: 1143213872}
+  buttonRestart: {fileID: 1143213872}
   buttonResume: {fileID: 1433631332}
   uiEscInfo: {fileID: 133811672}
   camera: {fileID: 1975560346}
@@ -1707,6 +1706,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5749848964958849601, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1282695630}
     - target: {fileID: 6549041922664524584, guid: f20df3d045e667e43a07424d8a298a7b,
         type: 3}
       propertyPath: m_Name

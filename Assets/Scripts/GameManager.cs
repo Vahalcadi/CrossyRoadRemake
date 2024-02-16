@@ -4,9 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("PauseMenu")]
     [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject resumeButton;
+    [SerializeField] GameObject buttonRestart;
     [SerializeField] GameObject restartButton;
+    [SerializeField] GameObject buttonResume;
+    [Header("UI")]
+    [SerializeField] GameObject uiEscInfo;
+
     [SerializeField] Transform camera;
 
     private bool isPaused;
@@ -50,9 +55,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-            ResuneMenu();
-            UpdateGamePause();
+            Pause();
         }
 
         if (Input.GetKeyUp(KeyCode.W) && canSpawnTerrain)
@@ -114,15 +117,26 @@ public class GameManager : MonoBehaviour
         if (isPaused == true && !isOver)
         {
             pauseMenu.SetActive(true);
-            resumeButton.SetActive(true);
+            buttonResume.SetActive(true);
             restartButton.SetActive(true);
+            buttonResume.SetActive(true);
+            uiEscInfo.SetActive(false);
         }
         else
         {
             pauseMenu.SetActive(false);
-            resumeButton.SetActive(false);
+            buttonResume.SetActive(false);
             restartButton.SetActive(false);
+            buttonResume.SetActive(false);
+
+            uiEscInfo.SetActive(true);
         }
+    }
+    public void Pause()
+    {
+        isPaused = !isPaused;
+        ResuneMenu();
+        UpdateGamePause();
     }
     private void GameOverMenu()
     {

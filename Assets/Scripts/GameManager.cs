@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     [Header("PauseMenu")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonRestart;
-    [SerializeField] GameObject restartButton;
     [SerializeField] GameObject buttonResume;
     [Header("UI")]
     [SerializeField] GameObject uiEscInfo;
@@ -58,8 +57,9 @@ public class GameManager : MonoBehaviour
             Pause();
         }
 
-        if (Input.GetKeyUp(KeyCode.W) && canSpawnTerrain)
+        if (Input.GetKeyUp(KeyCode.W) && canSpawnTerrain && !isOver)
         {
+            Time.timeScale = 1;
             canSpawnTerrain = false;
 
             SpawnTerrain();
@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        isOver = false;
         Time.timeScale = 1;
 
         SceneManager.LoadScene(0);
@@ -117,16 +118,15 @@ public class GameManager : MonoBehaviour
         if (isPaused == true && !isOver)
         {
             pauseMenu.SetActive(true);
+            buttonRestart.SetActive(true);
             buttonResume.SetActive(true);
-            restartButton.SetActive(true);
-            buttonResume.SetActive(true);
+
             uiEscInfo.SetActive(false);
         }
         else
         {
             pauseMenu.SetActive(false);
-            buttonResume.SetActive(false);
-            restartButton.SetActive(false);
+            buttonRestart.SetActive(false);
             buttonResume.SetActive(false);
 
             uiEscInfo.SetActive(true);
@@ -138,8 +138,17 @@ public class GameManager : MonoBehaviour
         ResuneMenu();
         UpdateGamePause();
     }
-    private void GameOverMenu()
+    public void GameOverMenu()
     {
-
+        buttonRestart.SetActive(true);
+        uiEscInfo.SetActive(false);
+    }
+    public void IsOverSetTrue()
+    {
+        isOver = true;
+    }
+    public bool GetIsOver()
+    {
+        return isOver;
     }
 }

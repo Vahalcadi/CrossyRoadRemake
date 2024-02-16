@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,12 +34,12 @@ public class GameManager : MonoBehaviour
 
         if (Instance != null)
             Destroy(Instance.gameObject);
-        
+
         else
             Instance = this;
 
 
-        for(int i = 0; i < InitialTerrainCount; i++)
+        for (int i = 0; i < InitialTerrainCount; i++)
         {
             SpawnTerrain();
         }
@@ -53,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
+            ResuneMenu();
             UpdateGamePause();
         }
 
@@ -78,7 +77,7 @@ public class GameManager : MonoBehaviour
     private void SpawnTerrain()
     {
         gameObjects.Add(Instantiate(terrains[Random.Range(0, terrains.Count)].terrain, currentPos, Quaternion.identity));
-        
+
         currentPos.z++;
     }
 
@@ -97,7 +96,7 @@ public class GameManager : MonoBehaviour
             isOver = true;
             Time.timeScale = 0;
             GameOverMenu();
-        }           
+        }
     }
     public void UpdateGamePause()
     {
@@ -112,9 +111,18 @@ public class GameManager : MonoBehaviour
     }
     private void ResuneMenu()
     {
-        pauseMenu.SetActive(true);
-        resumeButton.SetActive(true);
-        restartButton.SetActive(true);
+        if (isPaused == true && !isOver)
+        {
+            pauseMenu.SetActive(true);
+            resumeButton.SetActive(true);
+            restartButton.SetActive(true);
+        }
+        else
+        {
+            pauseMenu.SetActive(false);
+            resumeButton.SetActive(false);
+            restartButton.SetActive(false);
+        }
     }
     private void GameOverMenu()
     {

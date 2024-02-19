@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject uiEscInfo;
 
-    [SerializeField] Transform camera;
+    [SerializeField] Transform newCamera;
 
     private bool isPaused;
     private bool isOver;
@@ -22,26 +22,28 @@ public class GameManager : MonoBehaviour
 
     private bool canSpawnTerrain;
 
-    private List<GameObject> gameObjects = new();
+    private List<GameObject> instantiatedTerrains = new();
     private int count;
     public int terrainLimit;
     public int InitialTerrainCount;
-    public List<TerrainScriptableObj> terrains = new();
-
+    public List<GameObject> terrains = new();
+    private int random;
 
     public static GameManager Instance;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        isPaused = false;
-
         if (Instance != null)
             Destroy(Instance.gameObject);
 
         else
             Instance = this;
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        //isPaused = false;
 
         for (int i = 0; i < InitialTerrainCount; i++)
         {
@@ -65,8 +67,8 @@ public class GameManager : MonoBehaviour
             SpawnTerrain();
             if (count >= terrainLimit)
             {
-                Destroy(gameObjects[0].gameObject);
-                gameObjects.RemoveAt(0);
+                Destroy(instantiatedTerrains[0].gameObject);
+                instantiatedTerrains.RemoveAt(0);
             }
 
             count++;
@@ -79,7 +81,9 @@ public class GameManager : MonoBehaviour
 
     private void SpawnTerrain()
     {
-        gameObjects.Add(Instantiate(terrains[Random.Range(0, terrains.Count)].terrain, currentPos, Quaternion.identity));
+        random = Random.Range(0, terrains.Count);
+
+        instantiatedTerrains.Add(Instantiate(terrains[random], currentPos + terrains[random].transform.position, Quaternion.identity));
 
         currentPos.z++;
     }
@@ -95,7 +99,7 @@ public class GameManager : MonoBehaviour
     public void CanSpawnTerrain() => canSpawnTerrain = true;
     private void GameOverConditions()
     {
-        if (player.transform.position.z + 4 < camera.transform.position.z)
+        if (player.transform.position.z + 4 < newCamera.transform.position.z)
         {
             isOver = true;
             Time.timeScale = 0;
@@ -115,7 +119,7 @@ public class GameManager : MonoBehaviour
     }
     private void ResuneMenu()
     {
-        if (isPaused == true && !isOver)
+        if (isPaused && !isOver)
         {
             pauseMenu.SetActive(true);
             buttonRestart.SetActive(true);

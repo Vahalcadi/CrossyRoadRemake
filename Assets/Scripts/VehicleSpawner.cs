@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VehicleSpawner : MonoBehaviour
@@ -8,6 +7,7 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Transform spawnpoint;
     [SerializeField] private float minSpawnTime;
     [SerializeField] private float maxSpawnTime;
+    [SerializeField] private bool facingLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,9 @@ public class VehicleSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
-            Instantiate(vehicle, spawnpoint.position, vehicle.transform.rotation);
+            GameObject obj = Instantiate(vehicle, spawnpoint.position, vehicle.transform.rotation);
+            if (!facingLeft)
+                obj.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
     }
 }

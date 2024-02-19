@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class PlayerGameOver : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Veicle"))
+        if (collision.gameObject.CompareTag("Vehicle") || collision.gameObject.CompareTag("Water"))
         {
-            gameManager.UpdateGamePause();
-            gameManager.GameOverMenu();
-            gameManager.IsOverSetTrue();
+            GameManager.Instance.UpdateGamePause();
+            GameManager.Instance.GameOverMenu();
+            GameManager.Instance.IsOverSetTrue();
             Time.timeScale = 0;
         }
     }

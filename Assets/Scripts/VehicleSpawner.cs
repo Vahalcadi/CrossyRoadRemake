@@ -15,8 +15,20 @@ public class VehicleSpawner : MonoBehaviour
     {
         if(vehicle.GetComponent<Vehicle>().type == VehicleType.Train)
             StartCoroutine(SpawnTrain());
+        else if(vehicle.GetComponent<Vehicle>().type == VehicleType.Log)
+            StartCoroutine(SpawnLog());
         else
             StartCoroutine(SpawnVehicle());
+    }
+
+    private IEnumerator SpawnLog()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+            VehicleGenerator();
+
+        }
     }
 
     private IEnumerator SpawnTrain()

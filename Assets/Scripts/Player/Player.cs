@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,7 +10,9 @@ public class Player : MonoBehaviour
     public bool hasMoved;
     public bool isHopping;
 
-    private bool WalkOnLog;
+    private float logDir;
+
+    private bool walkOnLog;
 
     // Start is called before the first frame update
     void Start()
@@ -80,20 +83,26 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        walkOnLog = false;
         if (collision.collider.CompareTag("Log"))
-            WalkOnLog = true;
+        {
+            Debug.Log("enter");
+            walkOnLog = true;
+            logDir = collision.transform.forward.normalized.x;
+        }
         
     }
 
-    private void OnCollisionExit()
+    /*private void OnCollisionExit(Collision collision)
     {
-        WalkOnLog = false;
-    }
+        Debug.Log("exit");
+        walkOnLog = false;
+    }*/
 
     private void OnLog()
     {
-        if (WalkOnLog)
-            transform.position = new Vector3(transform.position.x - 7 * Time.deltaTime, transform.position.y, transform.position.z);
+        if (walkOnLog)
+            transform.position = new Vector3(transform.position.x + 7 * logDir * Time.deltaTime, transform.position.y, transform.position.z);
         else
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }

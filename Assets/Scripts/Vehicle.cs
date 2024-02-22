@@ -29,4 +29,5 @@ public class Vehicle : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

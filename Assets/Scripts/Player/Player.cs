@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
     private void OnLog()
     {
         if (WalkOnLog)
-            transform.position = new Vector3(transform.position.x - 4 * Time.deltaTime, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - 7 * Time.deltaTime, transform.position.y, transform.position.z);
         else
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }

@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public bool hasMoved;
     public bool isHopping;
 
+    private bool WalkOnLog;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,16 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        OnLog();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Log"))
+            WalkOnLog = true;
+        if (!other.CompareTag("Log"))
+            WalkOnLog = false;
+    }
     private void Move()
     {
         if (GameManager.Instance.GetIsOver())
@@ -72,7 +82,13 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x + moveOnX, transform.position.y, transform.position.z);
             hasMoved = true;
         }
-
+    }
+    private void OnLog()
+    {
+        if (WalkOnLog)
+            transform.position = new Vector3(transform.position.x - 4 * Time.deltaTime, transform.position.y, transform.position.z);
+        else
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     public void EndHop() => isHopping = false;

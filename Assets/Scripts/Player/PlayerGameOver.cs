@@ -10,7 +10,7 @@ public class PlayerGameOver : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Water"))
+        if (collision.gameObject.CompareTag("Water"))
             GameOver();
     }
     private void GameOver()

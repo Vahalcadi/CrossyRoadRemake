@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             Pause();
         }
 
-        if (Input.GetKeyUp(KeyCode.W) && canSpawnTerrain && !isOver)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && canSpawnTerrain && !isOver)
         {
             Time.timeScale = 1;
             canSpawnTerrain = false;

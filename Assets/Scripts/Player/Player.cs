@@ -24,13 +24,7 @@ public class Player : MonoBehaviour
         OnLog();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Log"))
-            WalkOnLog = true;
-        if (!other.CompareTag("Log"))
-            WalkOnLog = false;
-    }
+    
     private void Move()
     {
         if (GameManager.Instance.GetIsOver())
@@ -83,6 +77,19 @@ public class Player : MonoBehaviour
             hasMoved = true;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Log"))
+            WalkOnLog = true;
+        
+    }
+
+    private void OnCollisionExit()
+    {
+        WalkOnLog = false;
+    }
+
     private void OnLog()
     {
         if (WalkOnLog)

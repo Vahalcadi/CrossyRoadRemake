@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,8 +13,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject uiEscInfo;
 
     [SerializeField] Transform newCamera;
-
-
+    [Header("Score")]
+    [SerializeField] GameObject scoreShowGameObject;
+    [SerializeField] GameObject highScoreShowGameObject;
+    [SerializeField] TextMeshProUGUI scoreShow;
+    [SerializeField] TextMeshProUGUI highScoreShow;
+    [SerializeField] GameObject buttonResetHighScore;
+    private int highScore;
+    private int score;
 
     private bool isPaused;
     private bool isOver;
@@ -35,17 +42,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        highScoreShowGameObject.SetActive(false);
+        scoreShowGameObject.SetActive(false);
         if (Instance != null)
             Destroy(Instance.gameObject);
 
         else
             Instance = this;
     }
-
-    // Start is called before the first frame update
+    //PlayerPrefs.SetInt("HighScore", highScore)
     void Start()
     {
         //isPaused = false;
+        SavedHighScore();
 
         for (int i = 0; i < InitialTerrainCount; i++)
         {
@@ -53,9 +62,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            scoreShowGameObject.SetActive(true);
+        }
+        if (player.transform.position.z > score - 3)
+        {
+            score++;
+            scoreShow.text = score.ToString();
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
@@ -92,6 +109,12 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
         isOver = false;
         Time.timeScale = 1;
 
@@ -104,6 +127,7 @@ public class GameManager : MonoBehaviour
         if (player.transform.position.z + 4 < newCamera.transform.position.z)
         {
             isOver = true;
+            score = 0;
             Time.timeScale = 0;
             GameOverMenu();
         }
@@ -126,6 +150,7 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(true);
             buttonRestart.SetActive(true);
             buttonResume.SetActive(true);
+            buttonResetHighScore.SetActive(true);
 
             uiEscInfo.SetActive(false);
         }
@@ -134,27 +159,55 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(false);
             buttonRestart.SetActive(false);
             buttonResume.SetActive(false);
+            buttonResetHighScore.SetActive(false);
 
             uiEscInfo.SetActive(true);
         }
     }
     public void Pause()
     {
-        isPaused = !isPaused;
-        ResuneMenu();
-        UpdateGamePause();
+        if (!isOver)
+        {
+            isPaused = !isPaused;
+            ResuneMenu();
+            UpdateGamePause();
+        }
     }
     public void GameOverMenu()
     {
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+        highScoreShow.text = "TOP " + highScore.ToString();
+
         buttonRestart.SetActive(true);
         uiEscInfo.SetActive(false);
     }
     public void IsOverSetTrue()
     {
+
+        highScoreShowGameObject.SetActive(true);
         isOver = true;
     }
     public bool GetIsOver()
     {
         return isOver;
+    }
+    private void SavedHighScore()
+    {
+        if (PlayerPrefs.HasKey("HighScore"))
+            highScore = PlayerPrefs.GetInt("HighScore");
+        else
+            highScore = 0;
+    }
+    public void ResetHighScore()
+    {
+        highScore = 0;
+        PlayerPrefs.SetInt("HighScore", highScore);
+        PlayerPrefs.Save();
+        Debug.Log(highScore);
     }
 }

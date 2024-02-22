@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Transform newCamera;
 
+
+
     private bool isPaused;
     private bool isOver;
 

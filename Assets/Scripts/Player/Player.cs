@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
     {
         if (GameManager.Instance.GetIsOver())
             return;
-        
-        if (Input.GetKeyUp(KeyCode.W) && !isHopping)
+
+        if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping)
         {
             GameManager.Instance.CanSpawnTerrain();
 
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveOnZ);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.A) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping)
         {
             isHopping = true;
 
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x - moveOnX, transform.position.y, transform.position.z);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.S) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping)
         {
             isHopping = true;
 
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveOnZ);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.D) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping)
         {
             isHopping = true;
 
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x + moveOnX, transform.position.y, transform.position.z);
             hasMoved = true;
         }
-        
+
     }
 
     public void EndHop() => isHopping = false;

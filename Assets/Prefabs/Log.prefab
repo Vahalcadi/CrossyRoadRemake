@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3e691f5ed38c1489f4604a088abde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 4
-  maxSpeed: 4
+  minSpeed: 7
+  maxSpeed: 7
+  type: 0
   destroyGameObject_When_X: -40

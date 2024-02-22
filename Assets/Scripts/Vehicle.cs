@@ -1,9 +1,17 @@
 using UnityEngine;
 
+public enum VehicleType
+{
+    Log,
+    Car,
+    Train
+}
+
 public class Vehicle : MonoBehaviour
 {
     [SerializeField] private float minSpeed;
     [SerializeField] private float maxSpeed;
+    public VehicleType type;
     private float currentSpeed;
     [Header("When this is useless..")]
     [SerializeField] private int destroyGameObject_When_X = -40;

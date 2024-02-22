@@ -8,21 +8,45 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private float minSpawnTime;
     [SerializeField] private float maxSpawnTime;
     [SerializeField] private bool facingLeft;
-
+    
+ 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnVehicle());
+        if(vehicle.GetComponent<Vehicle>().type == VehicleType.Train)
+            StartCoroutine(SpawnTrain());
+        else
+            StartCoroutine(SpawnVehicle());
+    }
+
+    private IEnumerator SpawnTrain()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+
+            //--- Train signal ---//
+
+            yield return new WaitForSeconds(3);
+
+            VehicleGenerator();
+        }
     }
 
     private IEnumerator SpawnVehicle()
     {
         while (true)
         {
+            VehicleGenerator();
+
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
-            GameObject obj = Instantiate(vehicle, spawnpoint.position, vehicle.transform.rotation);
-            if (!facingLeft)
-                obj.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
+    }
+
+    private void VehicleGenerator()
+    {
+        GameObject obj = Instantiate(vehicle, spawnpoint.position, vehicle.transform.rotation);
+        if (!facingLeft)
+            obj.transform.rotation = Quaternion.Euler(0, 90, 0);
     }
 }

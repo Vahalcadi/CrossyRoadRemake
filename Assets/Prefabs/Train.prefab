@@ -120,4 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 40
   maxSpeed: 60
+  type: 2
   destroyGameObject_When_X: -40

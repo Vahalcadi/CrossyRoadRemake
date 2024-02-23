@@ -8,12 +8,10 @@ public class GameManager : MonoBehaviour
     [Header("PauseMenu")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonRestart;
-    [SerializeField] GameObject buttonResume;
 
     [Header("UI")]
     public GameObject uiEscInfo;
     public GameObject commandsInfo;
-    [SerializeField] GameObject buttonPause;
 
     [SerializeField] Transform newCamera;
 
@@ -156,7 +154,7 @@ public class GameManager : MonoBehaviour
         {
             pauseMenu.SetActive(true);
             buttonRestart.SetActive(true);
-            buttonResume.SetActive(true);
+            //buttonResume.SetActive(true);
             buttonResetHighScore.SetActive(true);
 
             uiEscInfo.SetActive(false);
@@ -166,7 +164,7 @@ public class GameManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
             buttonRestart.SetActive(false);
-            buttonResume.SetActive(false);
+            //buttonResume.SetActive(false);
             buttonResetHighScore.SetActive(false);
 
             uiEscInfo.SetActive(true);
@@ -220,7 +218,7 @@ public class GameManager : MonoBehaviour
     }
     public void UiConfigAtStart()
     {
-        buttonPause.SetActive(true);
+        //buttonPause.SetActive(true);
         uiEscInfo.SetActive(true);
         commandsInfo.SetActive(true);
     }

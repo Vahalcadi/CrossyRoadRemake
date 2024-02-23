@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
         canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, isWall); 
         canMoveLeft = !Physics.Raycast(transform.position, Vector3.left, moveOnX, isWall); 
         canMoveRight = !Physics.Raycast(transform.position, Vector3.right, moveOnX, isWall);
+
+        if (!canMoveForward || !canMoveBackwards || !canMoveLeft || !canMoveRight)
+            transform.parent = null;
+
         Move();
     }
 

@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 1932158454247777580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4553, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.118, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,8 +93,8 @@ Transform:
   m_GameObject: {fileID: 1985934385582912232}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.4578, y: 0.982, z: 0}
-  m_LocalScale: {x: 22.915495, y: 1.0640229, z: 1}
+  m_LocalPosition: {x: -15.4578, y: 15.2813, z: 0}
+  m_LocalScale: {x: 22.915495, y: 29.125174, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4281314557163318389}
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicle: {fileID: 6188412708819032551, guid: a5cfd6a2416b9cb41b046339b46f5de4, type: 3}
   spawnpoint: {fileID: 8764929832149917155}
-  minSpawnTime: 0
+  minSpawnTime: 1
   maxSpawnTime: 1.7
   facingLeft: 1
 --- !u!1 &9219881864083414755
@@ -350,8 +350,8 @@ Transform:
   m_GameObject: {fileID: 9219881864083414755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.4578, y: 0.982, z: 0}
-  m_LocalScale: {x: 22.915495, y: 1.0640229, z: 1}
+  m_LocalPosition: {x: 16.4578, y: 15.1344, z: 0}
+  m_LocalScale: {x: 22.915495, y: 28.774063, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4281314557163318389}

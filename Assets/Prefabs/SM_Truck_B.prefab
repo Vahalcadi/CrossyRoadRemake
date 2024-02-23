@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4906424696690788807
+--- !u!1 &6260857968536108871
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4768124046539053323}
-  - component: {fileID: 4207650328408936020}
-  - component: {fileID: 2870315881995719142}
+  - component: {fileID: 7894223962362947197}
+  - component: {fileID: 27510476826547566}
+  - component: {fileID: 288463959614368834}
   m_Layer: 0
-  m_Name: KillerDrone
-  m_TagString: Untagged
+  m_Name: SM_Truck_B
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4768124046539053323
+--- !u!4 &7894223962362947197
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906424696690788807}
+  m_GameObject: {fileID: 6260857968536108871}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.3, y: 5.52, z: 25.73}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1482772257010984343}
+  - {fileID: 2469654675861598945}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4207650328408936020
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &27510476826547566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260857968536108871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3e691f5ed38c1489f4604a088abde6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 4
+  maxSpeed: 4
+  type: 1
+  destroyGameObject_When_X: -40
+--- !u!65 &288463959614368834
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906424696690788807}
+  m_GameObject: {fileID: 6260857968536108871}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -53,24 +69,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.9606256, y: 0.54147196, z: 1.5857239}
-  m_Center: {x: 0.004219532, y: 0.01151824, z: 0.10043144}
---- !u!114 &2870315881995719142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906424696690788807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2802e5bf1a0b4459f72082b64b8ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 5749848964958849601, guid: f20df3d045e667e43a07424d8a298a7b, type: 3}
-  deathTimer: 8
-  speed: 10
---- !u!1 &6188863821713676893
+  m_Size: {x: 1, y: 0.97018, z: 3.0359778}
+  m_Center: {x: 0.003709197, y: 0.4612749, z: -0.42403424}
+--- !u!1 &7951114101976204006
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,46 +79,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1482772257010984343}
-  - component: {fileID: 3660253765872120094}
-  - component: {fileID: 3810683565286326933}
+  - component: {fileID: 2469654675861598945}
+  - component: {fileID: 7398229931711797229}
+  - component: {fileID: 7772862971851189712}
   m_Layer: 0
-  m_Name: KillerDrone
+  m_Name: SM_Truck_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1482772257010984343
+--- !u!4 &2469654675861598945
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6188863821713676893}
+  m_GameObject: {fileID: 7951114101976204006}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.65, y: 1.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4768124046539053323}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3660253765872120094
+  m_Father: {fileID: 7894223962362947197}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!33 &7398229931711797229
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6188863821713676893}
-  m_Mesh: {fileID: -6834699079187919281, guid: a0b0c0b646437aa468310f4ced5f9554, type: 3}
---- !u!23 &3810683565286326933
+  m_GameObject: {fileID: 7951114101976204006}
+  m_Mesh: {fileID: 1021403374596462188, guid: 5db83c17882b88b4893b98967545072d, type: 3}
+--- !u!23 &7772862971851189712
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6188863821713676893}
+  m_GameObject: {fileID: 7951114101976204006}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     public GameObject uiEscInfo;
-    public GameObject commandsInfo;
     [SerializeField] GameObject buttonPause;
 
     [SerializeField] Transform newCamera;
@@ -23,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreShow;
     [SerializeField] TextMeshProUGUI highScoreShow;
     [SerializeField] GameObject buttonResetHighScore;
-    
+
     private int highScore;
     private int score;
 
@@ -73,7 +72,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             scoreShowGameObject.SetActive(true);
-            commandsInfo.SetActive(false);
         }
         if (player.transform.position.z > score - 3)
         {
@@ -154,17 +152,16 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused && !isOver)
         {
-            pauseMenu.SetActive(true);
+            pauseMenu.SetActive(false);
             buttonRestart.SetActive(true);
             buttonResume.SetActive(true);
             buttonResetHighScore.SetActive(true);
 
             uiEscInfo.SetActive(false);
-            commandsInfo.SetActive(false);
         }
         else
         {
-            pauseMenu.SetActive(false);
+            pauseMenu.SetActive(true);
             buttonRestart.SetActive(false);
             buttonResume.SetActive(false);
             buttonResetHighScore.SetActive(false);
@@ -222,6 +219,5 @@ public class GameManager : MonoBehaviour
     {
         buttonPause.SetActive(true);
         uiEscInfo.SetActive(true);
-        commandsInfo.SetActive(true);
     }
 }

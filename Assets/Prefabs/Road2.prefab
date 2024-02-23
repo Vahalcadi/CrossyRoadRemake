@@ -44,6 +44,16 @@ PrefabInstance:
       propertyPath: facingLeft
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4170993212159526960, guid: 12ba6ec432865404085faf1548c4b470,
+        type: 3}
+      propertyPath: maxSpawnTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170993212159526960, guid: 12ba6ec432865404085faf1548c4b470,
+        type: 3}
+      propertyPath: minSpawnTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8152645136698206161, guid: 12ba6ec432865404085faf1548c4b470,
         type: 3}
       propertyPath: m_LocalPosition.x

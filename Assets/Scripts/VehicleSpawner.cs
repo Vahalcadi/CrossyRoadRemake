@@ -27,7 +27,6 @@ public class VehicleSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
             VehicleGenerator();
-
         }
     }
 
@@ -49,9 +48,8 @@ public class VehicleSpawner : MonoBehaviour
     {
         while (true)
         {
-            VehicleGenerator();
-
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+            VehicleGenerator();
         }
     }
 

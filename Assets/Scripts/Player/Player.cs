@@ -12,6 +12,13 @@ public class Player : MonoBehaviour
     public bool hasMoved;
     public bool isHopping;
 
+    [SerializeField] private LayerMask isWall;
+
+    private bool canMoveForward;
+    private bool canMoveBackwards;
+    private bool canMoveLeft;
+    private bool canMoveRight;
+
     private float logDir;
     [NonSerialized] public bool canMove = true;
     //private bool walkOnLog;
@@ -25,6 +32,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, isWall); 
+        canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, isWall); 
+        canMoveLeft = !Physics.Raycast(transform.position, Vector3.left, moveOnX, isWall); 
+        canMoveRight = !Physics.Raycast(transform.position, Vector3.right, moveOnX, isWall);
         Move();
     }
 
@@ -34,7 +45,7 @@ public class Player : MonoBehaviour
         if (!canMove || GameManager.Instance.GetIsOver())
             return;
 
-        if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward)
         {
             transform.parent = null;
 
@@ -51,7 +62,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveOnZ);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping && canMoveLeft)
         {
             numberOfSteps = 0;
 
@@ -64,7 +75,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x - moveOnX, transform.position.y, transform.position.z);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping && canMoveBackwards)
         {
             numberOfSteps++;
 
@@ -77,7 +88,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveOnZ);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping)
+        else if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping && canMoveRight)
         {
             numberOfSteps = 0;
 

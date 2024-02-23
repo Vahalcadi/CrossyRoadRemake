@@ -8,11 +8,13 @@ TagManager:
   - Vehicle
   - Veicle
   - Log
+  - Grass
+  - Road
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - 

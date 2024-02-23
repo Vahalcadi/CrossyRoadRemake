@@ -15,8 +15,19 @@ public class VehicleSpawner : MonoBehaviour
     {
         if(vehicle.GetComponent<Vehicle>().type == VehicleType.Train)
             StartCoroutine(SpawnTrain());
+        else if(vehicle.GetComponent<Vehicle>().type == VehicleType.Log)
+            StartCoroutine(SpawnLog());
         else
             StartCoroutine(SpawnVehicle());
+    }
+
+    private IEnumerator SpawnLog()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+            VehicleGenerator();
+        }
     }
 
     private IEnumerator SpawnTrain()
@@ -27,7 +38,7 @@ public class VehicleSpawner : MonoBehaviour
 
             //--- Train signal ---//
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.2f);
 
             VehicleGenerator();
         }
@@ -37,9 +48,8 @@ public class VehicleSpawner : MonoBehaviour
     {
         while (true)
         {
-            VehicleGenerator();
-
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+            VehicleGenerator();
         }
     }
 

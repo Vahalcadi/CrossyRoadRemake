@@ -9,18 +9,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonRestart;
     [SerializeField] GameObject buttonResume;
+
     [Header("UI")]
     public GameObject uiEscInfo;
     public GameObject commandsInfo;
     [SerializeField] GameObject buttonPause;
 
     [SerializeField] Transform newCamera;
+
     [Header("Score")]
     [SerializeField] GameObject scoreShowGameObject;
     [SerializeField] GameObject highScoreShowGameObject;
     [SerializeField] TextMeshProUGUI scoreShow;
     [SerializeField] TextMeshProUGUI highScoreShow;
     [SerializeField] GameObject buttonResetHighScore;
+    
     private int highScore;
     private int score;
 
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
             Pause();
         }
 
-        if (Input.GetKeyUp(KeyCode.W) && canSpawnTerrain && !isOver)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && canSpawnTerrain && !isOver)
         {
             Time.timeScale = 1;
             canSpawnTerrain = false;

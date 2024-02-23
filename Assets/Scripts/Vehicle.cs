@@ -14,7 +14,7 @@ public class Vehicle : MonoBehaviour
     public VehicleType type;
     private float currentSpeed;
     [Header("When this is useless..")]
-    [SerializeField] private int destroyGameObject_When_X = -40;
+    [SerializeField] private int destroyGameObject_When_X;
 
     private void Start()
     {
@@ -24,9 +24,10 @@ public class Vehicle : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
-        if (transform.position.x <= destroyGameObject_When_X)
+        if (transform.position.x <= destroyGameObject_When_X || transform.position.x >= -destroyGameObject_When_X)
         {
             Destroy(gameObject);
         }
     }
+
 }

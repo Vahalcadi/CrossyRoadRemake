@@ -1277,13 +1277,17 @@ MonoBehaviour:
   terrainLimit: 30
   InitialTerrainCount: 30
   terrains:
-  - {fileID: 8181600943790794642, guid: e6dfd46c3d1fced458983d66417465c2, type: 3}
-  - {fileID: 8181600943790794642, guid: 12ba6ec432865404085faf1548c4b470, type: 3}
-  - {fileID: 7344708795162703549, guid: 0819f9f7bebf59943970aa822bb36fc4, type: 3}
-  - {fileID: 6118328822624318164, guid: 95bbb45e4173b5547b6f081cfee131b7, type: 3}
   - {fileID: 5494998171905801695, guid: 58b00fc65565847498a31140eaba9276, type: 3}
   - {fileID: 720744568588417545, guid: e4718eacf7958904cbd3b27ce55ab333, type: 3}
+  - {fileID: 8181600943790794642, guid: 12ba6ec432865404085faf1548c4b470, type: 3}
+  - {fileID: 7344708795162703549, guid: 0819f9f7bebf59943970aa822bb36fc4, type: 3}
+  - {fileID: 7344708795162703549, guid: c03150cacf884be44b58c3db73c6e9ad, type: 3}
+  - {fileID: 8181600943790794642, guid: e6dfd46c3d1fced458983d66417465c2, type: 3}
+  - {fileID: 6118328822624318164, guid: 95bbb45e4173b5547b6f081cfee131b7, type: 3}
   - {fileID: 2806481282149446990, guid: 1c03ab98b3546b94faf028ab3fd9e11f, type: 3}
+  - {fileID: 2806481282149446990, guid: 080364c802771454cbb2f7fd15bcffb5, type: 3}
+  - {fileID: 8181600943790794642, guid: 3853171c6ecc2f1429e347d0de7a5f85, type: 3}
+  - {fileID: 8181600943790794642, guid: 182916166fd7ca442b9fe16e9a1cf000, type: 3}
 --- !u!1 &1433631332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,6 +2181,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 381b3acac6bdd6a4a91a300acaf101ef, type: 3}
+--- !u!1001 &8220024363126795276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2870315881995719142, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 467071190}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906424696690788807, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: m_Name
+      value: KillerDrone
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d6e5f0c977699e45bdec6a05bf36fa6, type: 3}
 --- !u!1001 &8913474464264321194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2258,3 +2335,4 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 1975560346}
   - {fileID: 190950175982897250}
+  - {fileID: 8220024363126795276}

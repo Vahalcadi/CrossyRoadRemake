@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37a73d82328c7d44b1426364a835c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicle: {fileID: 554622282715662244, guid: 33b722cfd6f3ed14396d21ae47833311, type: 3}
+  vehicle: {fileID: 2888605194464773799, guid: 116e7949cc39acb42a5d84051037f56a, type: 3}
   spawnpoint: {fileID: 403136811569766210}
   minSpawnTime: 1
   maxSpawnTime: 1.5
@@ -177,7 +177,7 @@ Transform:
   m_GameObject: {fileID: 8987011850609799486}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4553, y: 0.21, z: 0}
+  m_LocalPosition: {x: 0.4553, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

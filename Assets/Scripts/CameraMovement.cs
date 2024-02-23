@@ -4,7 +4,6 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private Vector3 offset;
-    private Vector3 targetPosition;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Player player;
     [SerializeField] private float speed;
@@ -19,7 +18,6 @@ public class CameraMovement : MonoBehaviour
     }
     private void Update()
     {
-        targetPosition = playerTransform.position + offset;
         if (player != null && player.hasMoved)
         {
             StartCoroutine(Move());
@@ -31,7 +29,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (!activeCoroutine)
         {
-            while (true)
+            while (!player.gameObject.GetComponent<PlayerGameOver>().isDead)
             {
                 yield return null;
                 activeCoroutine = true;

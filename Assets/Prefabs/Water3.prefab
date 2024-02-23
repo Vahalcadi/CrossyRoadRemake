@@ -17,7 +17,7 @@ PrefabInstance:
         type: 3}
       propertyPath: vehicle
       value: 
-      objectReference: {fileID: 1966083090209822840, guid: ffdde0c511a83a94893e34a7d50dfa8b,
+      objectReference: {fileID: 6188412708819032551, guid: a5cfd6a2416b9cb41b046339b46f5de4,
         type: 3}
     - target: {fileID: 790260165369931516, guid: 95bbb45e4173b5547b6f081cfee131b7,
         type: 3}
@@ -77,7 +77,7 @@ PrefabInstance:
     - target: {fileID: 6118328822624318164, guid: 95bbb45e4173b5547b6f081cfee131b7,
         type: 3}
       propertyPath: m_Name
-      value: Water2
+      value: Water3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

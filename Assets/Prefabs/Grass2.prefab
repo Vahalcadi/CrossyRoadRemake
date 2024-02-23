@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3801424593280655855}
   - component: {fileID: 8350058031269972385}
   m_Layer: 0
-  m_Name: Grass
+  m_Name: Grass2
   m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,16 +1,18 @@
+using System;
 using UnityEngine;
 
 public class PlayerGameOver : MonoBehaviour
 {
+    [NonSerialized] public bool isDead;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Vehicle"))
+        if (!isDead && other.gameObject.CompareTag("Vehicle"))
             GameOver();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Water"))
+        if (!isDead && collision.gameObject.CompareTag("Water"))
             GameOver();
     }
     private void GameOver()

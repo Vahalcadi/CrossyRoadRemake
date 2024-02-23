@@ -39,7 +39,7 @@ public class VehicleSpawner : MonoBehaviour
 
             //--- Train signal ---//
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.2f);
 
             VehicleGenerator();
         }

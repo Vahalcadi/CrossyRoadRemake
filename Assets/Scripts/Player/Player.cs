@@ -1,8 +1,10 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [NonSerialized] public int numberOfSteps;
     public int moveOnZ;
     public int moveOnX;
     [SerializeField] private MeshRenderer playerMesh;
@@ -11,8 +13,8 @@ public class Player : MonoBehaviour
     public bool isHopping;
 
     private float logDir;
-
-    private bool walkOnLog;
+    [NonSerialized] public bool canMove = true;
+    //private bool walkOnLog;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +26,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        OnLog();
     }
 
     
     private void Move()
     {
-        if (GameManager.Instance.GetIsOver())
+        if (!canMove || GameManager.Instance.GetIsOver())
             return;
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping)
         {
+            transform.parent = null;
+
+            numberOfSteps = 0;
+
             GameManager.Instance.CanSpawnTerrain();
 
             isHopping = true;
@@ -48,6 +53,8 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping)
         {
+            numberOfSteps = 0;
+
             isHopping = true;
 
             playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x - 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
@@ -59,6 +66,8 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping)
         {
+            numberOfSteps++;
+
             isHopping = true;
 
             playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z - 5));
@@ -70,6 +79,8 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping)
         {
+            numberOfSteps = 0;
+
             isHopping = true;
 
             playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x + 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
@@ -83,28 +94,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        walkOnLog = false;
         if (collision.collider.CompareTag("Log"))
         {
             Debug.Log("enter");
-            walkOnLog = true;
-            logDir = collision.transform.forward.normalized.x;
-        }
-        
+            transform.parent = collision.gameObject.transform;   
+            transform.position = new Vector3(collision.transform.position.x, transform.position.y, collision.transform.position.z);
+        }     
     }
 
-    /*private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         Debug.Log("exit");
-        walkOnLog = false;
-    }*/
-
-    private void OnLog()
-    {
-        if (walkOnLog)
-            transform.position = new Vector3(transform.position.x + 7 * logDir * Time.deltaTime, transform.position.y, transform.position.z);
-        else
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        transform.parent = null;
     }
 
     public void EndHop() => isHopping = false;

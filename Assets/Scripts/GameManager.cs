@@ -9,16 +9,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonRestart;
     [SerializeField] GameObject buttonResume;
+
     [Header("UI")]
     [SerializeField] GameObject uiEscInfo;
 
     [SerializeField] Transform newCamera;
+
     [Header("Score")]
     [SerializeField] GameObject scoreShowGameObject;
     [SerializeField] GameObject highScoreShowGameObject;
     [SerializeField] TextMeshProUGUI scoreShow;
     [SerializeField] TextMeshProUGUI highScoreShow;
     [SerializeField] GameObject buttonResetHighScore;
+    
     private int highScore;
     private int score;
 

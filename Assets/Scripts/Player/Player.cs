@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     private Animator anim;
     public bool hasMoved;
     public bool isHopping;
-    [SerializeField] int playerMovementXOnLogs;
 
     [SerializeField] private LayerMask isWall;
 

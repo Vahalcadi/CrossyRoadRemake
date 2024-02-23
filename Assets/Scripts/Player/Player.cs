@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Animator anim;
     public bool hasMoved;
     public bool isHopping;
+    [SerializeField] int playerMovementXOnLogs;
 
     private bool WalkOnLog;
 
@@ -86,7 +87,7 @@ public class Player : MonoBehaviour
     private void OnLog()
     {
         if (WalkOnLog)
-            transform.position = new Vector3(transform.position.x - 7 * Time.deltaTime, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - pla * Time.deltaTime, transform.position.y, transform.position.z);
         else
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }

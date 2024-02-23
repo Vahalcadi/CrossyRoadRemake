@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject buttonRestart;
     [SerializeField] GameObject buttonResume;
     [Header("UI")]
-    [SerializeField] GameObject uiEscInfo;
+    public GameObject uiEscInfo;
+    public GameObject commandsInfo;
+    [SerializeField] GameObject buttonPause;
 
     [SerializeField] Transform newCamera;
     [Header("Score")]
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
     //PlayerPrefs.SetInt("HighScore", highScore)
     void Start()
     {
+        UiConfigAtStart();
         //isPaused = false;
         SavedHighScore();
 
@@ -64,9 +67,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             scoreShowGameObject.SetActive(true);
+            commandsInfo.SetActive(false);
         }
         if (player.transform.position.z > score - 3)
         {
@@ -153,6 +157,7 @@ public class GameManager : MonoBehaviour
             buttonResetHighScore.SetActive(true);
 
             uiEscInfo.SetActive(false);
+            commandsInfo.SetActive(false);
         }
         else
         {
@@ -209,5 +214,11 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("HighScore", highScore);
         PlayerPrefs.Save();
         Debug.Log(highScore);
+    }
+    public void UiConfigAtStart()
+    {
+        buttonPause.SetActive(true);
+        uiEscInfo.SetActive(true);
+        commandsInfo.SetActive(true);
     }
 }

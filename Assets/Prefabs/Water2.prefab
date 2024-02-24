@@ -319,8 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicle: {fileID: 2888605194464773799, guid: 116e7949cc39acb42a5d84051037f56a, type: 3}
   spawnpoint: {fileID: 8764929832149917155}
-  minSpawnTime: 1
-  maxSpawnTime: 1.7
+  minSpawnTime: 0.6
+  maxSpawnTime: 1.5
   facingLeft: 0
 --- !u!1 &9219881864083414755
 GameObject:

@@ -51,7 +51,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward)
         {
-            transform.parent = null;
+            if (transform.parent != null)
+                transform.parent = null;
 
             numberOfSteps = 0;
 

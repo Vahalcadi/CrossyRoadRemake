@@ -8,7 +8,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private float speed;
 
-    [SerializeField] private float cameraScrollingOnPlayerMovement = 6f;
+    [SerializeField] private float cameraScrollingOnPlayerMovement;
 
     private bool activeCoroutine;
 

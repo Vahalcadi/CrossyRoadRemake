@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Log"))
         {
@@ -115,12 +115,15 @@ public class Player : MonoBehaviour
             transform.parent = collision.gameObject.transform;   
             transform.position = new Vector3(collision.transform.position.x, transform.position.y, collision.transform.position.z);
         }     
-    }
+    }*/
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("exit");
-        transform.parent = null;
+        if (other.CompareTag("Log"))
+        {
+            transform.parent = other.gameObject.transform;
+            transform.position = new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z);
+        }
     }
 
     public void EndHop() => isHopping = false;

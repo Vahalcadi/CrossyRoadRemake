@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("PauseMenu")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonRestart;
+    [SerializeField] GameObject buttonResume;
 
     [Header("UI")]
     public GameObject uiEscInfo;
@@ -153,7 +154,7 @@ public class GameManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
             buttonRestart.SetActive(true);
-            //buttonResume.SetActive(true);
+            buttonResume.SetActive(true);
             buttonResetHighScore.SetActive(true);
 
             uiEscInfo.SetActive(false);
@@ -162,7 +163,7 @@ public class GameManager : MonoBehaviour
         {
             pauseMenu.SetActive(true);
             buttonRestart.SetActive(false);
-            //buttonResume.SetActive(false);
+            buttonResume.SetActive(false);
             buttonResetHighScore.SetActive(false);
 
             uiEscInfo.SetActive(true);

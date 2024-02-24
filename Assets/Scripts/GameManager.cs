@@ -8,10 +8,13 @@ public class GameManager : MonoBehaviour
     [Header("PauseMenu")]
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonRestart;
+    [SerializeField] GameObject buttonResume;
 
     [Header("UI")]
-    public GameObject uiEscInfo;
-    public GameObject commandsInfo;
+    [SerializeField] GameObject uiEscInfo;
+    [SerializeField] GameObject buttonPause;
+    [SerializeField] TextMeshProUGUI coinsCollected;
+    private int coinCount;
 
     [SerializeField] Transform newCamera;
 
@@ -21,7 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreShow;
     [SerializeField] TextMeshProUGUI highScoreShow;
     [SerializeField] GameObject buttonResetHighScore;
-    
+    [Header("Others")]
+
     private int highScore;
     private int score;
 
@@ -71,7 +75,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             scoreShowGameObject.SetActive(true);
-            commandsInfo.SetActive(false);
         }
         if (player.transform.position.z > score - 3)
         {
@@ -123,7 +126,7 @@ public class GameManager : MonoBehaviour
         isOver = false;
         Time.timeScale = 1;
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void CanSpawnTerrain() => canSpawnTerrain = true;
@@ -152,19 +155,18 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused && !isOver)
         {
-            pauseMenu.SetActive(true);
+            pauseMenu.SetActive(false);
             buttonRestart.SetActive(true);
-            //buttonResume.SetActive(true);
+            buttonResume.SetActive(true);
             buttonResetHighScore.SetActive(true);
 
             uiEscInfo.SetActive(false);
-            commandsInfo.SetActive(false);
         }
         else
         {
-            pauseMenu.SetActive(false);
+            pauseMenu.SetActive(true);
             buttonRestart.SetActive(false);
-            //buttonResume.SetActive(false);
+            buttonResume.SetActive(false);
             buttonResetHighScore.SetActive(false);
 
             uiEscInfo.SetActive(true);
@@ -181,6 +183,8 @@ public class GameManager : MonoBehaviour
     }
     public void GameOverMenu()
     {
+        CoinsSaveInformation();
+
         if (score > highScore)
         {
             highScore = score;
@@ -220,6 +224,26 @@ public class GameManager : MonoBehaviour
     {
         //buttonPause.SetActive(true);
         uiEscInfo.SetActive(true);
-        commandsInfo.SetActive(true);
+    }
+
+    public void CoinPlusOne(string pass)
+    {
+        if (pass == "imACoin")
+        {
+            coinCount++;
+            coinsCollected.text = coinCount.ToString();
+        }
+    }
+
+    public void CoinsSaveInformation()
+    {
+        PlayerPrefs.SetInt("CoinsCollected", +coinCount);
+        PlayerPrefs.Save();
+        Debug.Log(coinCount);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -2007,7 +2007,7 @@ MonoBehaviour:
   playerTransform: {fileID: 467071189}
   player: {fileID: 467071190}
   speed: 0.5
-  cameraScrollingOnPlayerMovement: 15
+  cameraScrollingOnPlayerMovement: 10
 --- !u!1 &2052122280
 GameObject:
   m_ObjectHideFlags: 0

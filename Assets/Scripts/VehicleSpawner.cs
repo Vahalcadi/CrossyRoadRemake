@@ -8,7 +8,8 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private float minSpawnTime;
     [SerializeField] private float maxSpawnTime;
     [SerializeField] private bool facingLeft;
-    
+
+    [SerializeField] private Animator trainSignalAnimator;
  
     // Start is called before the first frame update
     void Start()
@@ -38,9 +39,14 @@ public class VehicleSpawner : MonoBehaviour
 
             //--- Train signal ---//
 
+            trainSignalAnimator.SetBool("IncomingTrain", true);
+
             yield return new WaitForSeconds(1.2f);
 
             VehicleGenerator();
+
+            yield return new WaitForSeconds(1);
+            trainSignalAnimator.SetBool("IncomingTrain", false);
         }
     }
 

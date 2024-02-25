@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     {
         random = Random.Range(0, terrains.Count);
 
-        instantiatedTerrains.Add(Instantiate(terrains[random], currentPos + terrains[random].transform.position, Quaternion.identity));
+        instantiatedTerrains.Add(Instantiate(terrains[random], currentPos + terrains[random].transform.position, terrains[random].transform.rotation));
 
         currentPos.z++;
     }

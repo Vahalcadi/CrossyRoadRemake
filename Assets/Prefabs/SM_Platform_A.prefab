@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5415113224628230010}
   - component: {fileID: 1687120845913811404}
   - component: {fileID: 54208323841017547}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Platform_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,6 +241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Platform_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b595c3ed291e3c458fcc2a3af7fdc00,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

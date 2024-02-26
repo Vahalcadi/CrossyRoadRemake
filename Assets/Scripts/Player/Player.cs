@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,12 +13,14 @@ public class Player : MonoBehaviour
     public bool hasMoved;
     public bool isHopping;
 
-    [SerializeField] private LayerMask isWall;
+    [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] private LayerMask whatIsGround;
 
     private bool canMoveForward;
     private bool canMoveBackwards;
     private bool canMoveLeft;
     private bool canMoveRight;
+    private bool canJump;
 
     private float logDir;
     [NonSerialized] public bool canMove = true;
@@ -32,10 +35,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, isWall); 
-        canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, isWall); 
-        canMoveLeft = !Physics.Raycast(transform.position, Vector3.left, moveOnX, isWall); 
-        canMoveRight = !Physics.Raycast(transform.position, Vector3.right, moveOnX, isWall);
+        canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, whatIsWall); 
+        canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, whatIsWall); 
+        canMoveLeft = !Physics.Raycast(transform.position, Vector3.left, moveOnX, whatIsWall); 
+        canMoveRight = !Physics.Raycast(transform.position, Vector3.right, moveOnX, whatIsWall);
+        canJump = Physics.Raycast(transform.position, Vector3.down, moveOnZ, whatIsGround);
 
         if (!canMoveForward || !canMoveBackwards || !canMoveLeft || !canMoveRight)
             transform.parent = null;
@@ -49,7 +53,7 @@ public class Player : MonoBehaviour
         if (!canMove || GameManager.Instance.GetIsOver())
             return;
 
-        if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward && canJump)
         {
             if (transform.parent != null)
                 transform.parent = null;
@@ -67,7 +71,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveOnZ);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping && canMoveLeft)
+        if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping && canMoveLeft && canJump)
         {
             numberOfSteps = 0;
 
@@ -80,7 +84,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x - moveOnX, transform.position.y, transform.position.z);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping && canMoveBackwards)
+        if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping && canMoveBackwards && canJump)
         {
             numberOfSteps++;
 
@@ -93,7 +97,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveOnZ);
             hasMoved = true;
         }
-        else if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping && canMoveRight)
+        if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping && canMoveRight && canJump)
         {
             numberOfSteps = 0;
 
@@ -125,6 +129,11 @@ public class Player : MonoBehaviour
             transform.parent = other.gameObject.transform;
             transform.position = new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - moveOnZ, transform.position.z));
     }
 
     public void EndHop() => isHopping = false;

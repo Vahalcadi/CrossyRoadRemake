@@ -2008,8 +2008,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 467071189}
   player: {fileID: 467071190}
-  speed: 0.5
-  cameraScrollingOnPlayerMovement: 10
+  speed: 0.1
+  cameraScrollingOnPlayerMovement: 900
 --- !u!1 &2052122280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,20 +2393,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 830088382392131733, guid: 381b3acac6bdd6a4a91a300acaf101ef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1898571631180865191, guid: 381b3acac6bdd6a4a91a300acaf101ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1898571631180865191, guid: 381b3acac6bdd6a4a91a300acaf101ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0868
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1898571631180865191, guid: 381b3acac6bdd6a4a91a300acaf101ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.5049
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 1898571631180865191, guid: 381b3acac6bdd6a4a91a300acaf101ef,
         type: 3}
@@ -2447,6 +2452,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpawnBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 9111793466608681603, guid: 381b3acac6bdd6a4a91a300acaf101ef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2584,10 +2594,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5647013418907442646, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647013418907442646, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647013418907442646, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647013418907442646, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647013418907442646, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647013418907442646, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5749848964958849601, guid: f20df3d045e667e43a07424d8a298a7b,
         type: 3}
       propertyPath: isWall.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749848964958849601, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: whatIsWall.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749848964958849601, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: whatIsWater.m_Bits
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749848964958849601, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6549041922664524584, guid: f20df3d045e667e43a07424d8a298a7b,
         type: 3}

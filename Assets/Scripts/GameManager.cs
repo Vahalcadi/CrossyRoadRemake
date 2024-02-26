@@ -226,13 +226,10 @@ public class GameManager : MonoBehaviour
         uiEscInfo.SetActive(true);
     }
 
-    public void CoinPlusOne(string pass)
+    public void CollectCoin()
     {
-        if (pass == "imACoin")
-        {
-            coinCount++;
-            coinsCollected.text = coinCount.ToString();
-        }
+        coinCount++;
+        coinsCollected.text = $"{coinCount}";
     }
 
     public void CoinsSaveInformation()

@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class CoinsCollectable : MonoBehaviour
 {
-    GameManager gameManager;
+    [SerializeField] private int spawnChance;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.CoinPlusOne("imACoin");
+            GameManager.Instance.CollectCoin();
             Destroy(gameObject);
         }
     }

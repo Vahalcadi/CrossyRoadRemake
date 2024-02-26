@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CoinsCollectable : MonoBehaviour
 {
-    [SerializeField] private int spawnChance;
+    public int spawnChance;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject uiEscInfo;
     [SerializeField] GameObject buttonPause;
     [SerializeField] TextMeshProUGUI coinsCollected;
-    private int coinCount;
+    [NonSerialized] public int coinCount;
 
     [SerializeField] Transform newCamera;
 
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
     public int terrainLimit;
     public int InitialTerrainCount;
     public List<GameObject> terrains = new();
+    [SerializeField] private GameObject coinPrefab;
     private int random;
 
     public static GameManager Instance;
@@ -108,9 +111,12 @@ public class GameManager : MonoBehaviour
 
     private void SpawnTerrain()
     {
-        random = Random.Range(0, terrains.Count);
+        random = UnityEngine.Random.Range(0, terrains.Count);
 
         instantiatedTerrains.Add(Instantiate(terrains[random], currentPos + terrains[random].transform.position, terrains[random].transform.rotation));
+
+        if (UnityEngine.Random.Range(0, 101) < coinPrefab.GetComponent<CoinsCollectable>().spawnChance && !terrains[random].CompareTag("Water"))
+            Instantiate(coinPrefab, instantiatedTerrains.Last().transform.position + new Vector3(UnityEngine.Random.Range(-4, 5), 0.023f, 0), coinPrefab.transform.rotation);
 
         currentPos.z++;
     }
@@ -183,6 +189,9 @@ public class GameManager : MonoBehaviour
     }
     public void GameOverMenu()
     {
+        /*if (coinCount >= 100)
+            Gacha.Instance.UnlockSkin();*/
+
         CoinsSaveInformation();
 
         if (score > highScore)

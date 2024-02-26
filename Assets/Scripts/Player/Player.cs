@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
             anim.SetTrigger("hopTrigger");
 
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveOnZ);
+            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z + moveOnZ);
             hasMoved = true;
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping && canMoveLeft && canJump)
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
             anim.SetTrigger("hopTrigger");
 
-            transform.position = new Vector3(transform.position.x - moveOnX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x - moveOnX), transform.position.y, transform.position.z);
             hasMoved = true;
         }
         if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping && canMoveBackwards && canJump)
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
 
             anim.SetTrigger("hopTrigger");
 
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveOnZ);
+            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z - moveOnZ);
             hasMoved = true;
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping && canMoveRight && canJump)
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
 
             anim.SetTrigger("hopTrigger");
 
-            transform.position = new Vector3(transform.position.x + moveOnX, transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x + moveOnX), transform.position.y, transform.position.z);
             hasMoved = true;
         }
     }

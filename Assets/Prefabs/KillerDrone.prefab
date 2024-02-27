@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5749848964958849601, guid: f20df3d045e667e43a07424d8a298a7b, type: 3}
-  deathTimer: 8
+  maxTimeTillDeathTimer: 7
   speed: 10
 --- !u!1 &6188863821713676893
 GameObject:

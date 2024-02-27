@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     private bool isPaused;
     private bool isOver;
 
-    private Vector3 currentPos = new Vector3(0, 0, 0);
+    private Vector3 currentPos = new Vector3(0, 0, 4);
 
     [SerializeField] private Player player;
 
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> terrains = new();
     [SerializeField] private GameObject coinPrefab;
     private int random;
+    private float deathTimer;
 
     public static GameManager Instance;
 
@@ -247,6 +248,9 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log(coinCount);
     }
+
+    public float GetDeathTimer() => deathTimer;
+    public void SetDeathTimer(float value) => deathTimer = value;
 
     public void ReturnToMainMenu()
     {

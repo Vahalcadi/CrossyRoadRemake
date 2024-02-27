@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward && canJump)
         {
+            GameManager.Instance.SetDeathTimer(7);
+
             if (transform.parent != null)
                 transform.parent = null;
 
@@ -73,6 +75,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping && canMoveLeft && canJump)
         {
+            GameManager.Instance.SetDeathTimer(7);
+
             numberOfSteps = 0;
 
             isHopping = true;
@@ -86,6 +90,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping && canMoveBackwards && canJump)
         {
+            GameManager.Instance.SetDeathTimer(7);
+
             numberOfSteps++;
 
             isHopping = true;
@@ -99,6 +105,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping && canMoveRight && canJump)
         {
+            GameManager.Instance.SetDeathTimer(7);
+
             numberOfSteps = 0;
 
             isHopping = true;
@@ -111,16 +119,6 @@ public class Player : MonoBehaviour
             hasMoved = true;
         }
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Log"))
-        {
-            Debug.Log("enter");
-            transform.parent = collision.gameObject.transform;   
-            transform.position = new Vector3(collision.transform.position.x, transform.position.y, collision.transform.position.z);
-        }     
-    }*/
 
     private void OnTriggerEnter(Collider other)
     {

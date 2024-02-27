@@ -6,21 +6,21 @@ using UnityEngine;
 public class KillerDrone : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private float deathTimer;
+    [SerializeField] private float maxTimeTillDeathTimer;
     [SerializeField] private float speed;
-    private float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        timer = deathTimer;
+        GameManager.Instance.SetDeathTimer(maxTimeTillDeathTimer);
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        GameManager.Instance.SetDeathTimer(GameManager.Instance.GetDeathTimer() - Time.deltaTime);
 
-        if (player.numberOfSteps >= 3 || (timer <= 0 && !player.hasMoved))
+        if (player.numberOfSteps >= 4 || (GameManager.Instance.GetDeathTimer() <= 0 && player.hasMoved))
         {
             player.canMove = false;
             player.gameObject.GetComponent<PlayerGameOver>().isDead = true;

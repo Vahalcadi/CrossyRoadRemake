@@ -333,7 +333,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6748105966673692032, guid: e6dfd46c3d1fced458983d66417465c2, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7484340918588927946, guid: e6dfd46c3d1fced458983d66417465c2, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5570021062431023308, guid: e6dfd46c3d1fced458983d66417465c2,
         type: 3}
@@ -1685,8 +1686,8 @@ MonoBehaviour:
   - {fileID: 7637403882394873628, guid: 7b02165301c421b4c91734bacb2b35c1, type: 3}
   - {fileID: 7637403882394873628, guid: 34f1f38ddfc51b846983d5791b976698, type: 3}
   - {fileID: 8411571413652193563, guid: e6dfd46c3d1fced458983d66417465c2, type: 3}
-  - {fileID: 8411571413652193563, guid: 8bed9d0e08b8bbc41a193ee4604a6faf, type: 3}
-  - {fileID: 8411571413652193563, guid: f3b2561c73df62a4cac08f41624b556b, type: 3}
+  - {fileID: 8411571413652193563, guid: c2d46f49321fa944eaa0c17b0639350e, type: 3}
+  - {fileID: 8411571413652193563, guid: aa5ebba4511077b4996e4e6868a8cb11, type: 3}
   - {fileID: 4427806714246976537, guid: 33963aaea2d57a8489adb088e67d985a, type: 3}
   - {fileID: 4427806714246976537, guid: 910d23b0485b8484585f974f4671ae5e, type: 3}
   - {fileID: 4427806714246976537, guid: d62bf434a3a7def42be711d29457bd99, type: 3}
@@ -2940,6 +2941,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 467071190}
+    - target: {fileID: 2870315881995719142, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+        type: 3}
+      propertyPath: gameCamera
+      value: 
+      objectReference: {fileID: 330585543}
     - target: {fileID: 4768124046539053323, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3132,14 +3138,14 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 330585546}
+  - {fileID: 1975560346}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 8913474464264321194}
   - {fileID: 1282695629}
   - {fileID: 2052122284}
   - {fileID: 482776752}
-  - {fileID: 330585546}
-  - {fileID: 1975560346}
   - {fileID: 8220024363126795276}
   - {fileID: 296534047}
   - {fileID: 1285841547}

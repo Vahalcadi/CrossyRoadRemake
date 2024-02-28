@@ -119,7 +119,10 @@ public class GameManager : MonoBehaviour
         if (UnityEngine.Random.Range(0, 101) < coinPrefab.GetComponent<CoinsCollectable>().spawnChance && !terrains[random].CompareTag("Water"))
             Instantiate(coinPrefab, instantiatedTerrains.Last().transform.position + new Vector3(UnityEngine.Random.Range(-4, 5), 0.023f, 0), coinPrefab.transform.rotation);
 
-        currentPos.z++;
+        if (terrains[random].CompareTag("Rooftop"))
+            currentPos.z = currentPos.z + 2;
+        else
+            currentPos.z++;
     }
 
     public void RestartGame()

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    private Vector3 offset;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Player player;
     [SerializeField] private float speed;
@@ -13,11 +12,12 @@ public class CameraMovement : MonoBehaviour
     [Header("When player is death")]
     [SerializeField] KillerDrone killerDrone;
 
+    private PlayerGameOver playerGameOver;
     private bool activeCoroutine;
 
-    private void Awake()
+    private void Start()
     {
-        offset = transform.position - playerTransform.position;
+        playerGameOver = player.gameObject.GetComponent<PlayerGameOver>();
     }
     private void Update()
     {
@@ -25,11 +25,11 @@ public class CameraMovement : MonoBehaviour
         {
             StartCoroutine(Move());
         }
-        if (killerDrone.cameraOnPlayer)
+        if (killerDrone.killPlayer)
         {
             StopCoroutine(Move());
             transform.parent = playerTransform;
-            transform.position = new Vector3((killerDrone.transform.position.x + 2), (killerDrone.transform.position.y + 5), (killerDrone.transform.position.z - 5));
+            transform.position = new Vector3(player.transform.position.x + 2, player.transform.position.y + 5, player.transform.position.z - 5);
         }
     }
 
@@ -37,7 +37,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (!activeCoroutine)
         {
-            while (!player.gameObject.GetComponent<PlayerGameOver>().isDead)
+            while (!playerGameOver.isDead)
             {
                 yield return null;
                 activeCoroutine = true;

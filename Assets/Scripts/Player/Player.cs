@@ -1,8 +1,5 @@
 using System;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-
 public class Player : MonoBehaviour
 {
     [NonSerialized] public int numberOfSteps;
@@ -35,9 +32,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, whatIsWall); 
-        canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, whatIsWall); 
-        canMoveLeft = !Physics.Raycast(transform.position, Vector3.left, moveOnX, whatIsWall); 
+        canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, whatIsWall);
+        canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, whatIsWall);
+        canMoveLeft = !Physics.Raycast(transform.position, Vector3.left, moveOnX, whatIsWall);
         canMoveRight = !Physics.Raycast(transform.position, Vector3.right, moveOnX, whatIsWall);
         canJump = Physics.Raycast(transform.position, Vector3.down, moveOnZ, whatIsGround);
 
@@ -47,14 +44,19 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    
+
     private void Move()
     {
         if (!canMove || GameManager.Instance.GetIsOver())
             return;
 
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            anim.SetBool("isPreparingHop", true);
+
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward && canJump)
         {
+            anim.SetBool("isPreparingHop", false);
+
             GameManager.Instance.SetDeathTimer(7);
 
             if (transform.parent != null)
@@ -73,8 +75,11 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z + moveOnZ);
             hasMoved = true;
         }
+
         if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping && canMoveLeft && canJump)
         {
+            anim.SetBool("isPreparingHop", false);
+
             GameManager.Instance.SetDeathTimer(7);
 
             numberOfSteps = 0;
@@ -90,6 +95,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping && canMoveBackwards && canJump)
         {
+            anim.SetBool("isPreparingHop", false);
             GameManager.Instance.SetDeathTimer(7);
 
             numberOfSteps++;
@@ -105,6 +111,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping && canMoveRight && canJump)
         {
+            anim.SetBool("isPreparingHop", false);
+
             GameManager.Instance.SetDeathTimer(7);
 
             numberOfSteps = 0;
@@ -113,6 +121,7 @@ public class Player : MonoBehaviour
 
             playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x + 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
 
+            
             anim.SetTrigger("hopTrigger");
 
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x + moveOnX), transform.position.y, transform.position.z);

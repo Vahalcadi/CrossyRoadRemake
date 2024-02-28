@@ -17,6 +17,8 @@ public class PlayerGameOver : MonoBehaviour
     }
     private void GameOver()
     {
+
+        GetComponent<Animator>().SetTrigger("deathTrigger");
         GameManager.Instance.UpdateGamePause();
         GameManager.Instance.GameOverMenu();
         GameManager.Instance.IsOverSetTrue();

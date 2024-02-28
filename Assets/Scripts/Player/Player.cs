@@ -50,8 +50,29 @@ public class Player : MonoBehaviour
         if (!canMove || GameManager.Instance.GetIsOver())
             return;
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if
+        (
+            (
+                (Input.GetKey(KeyCode.UpArrow) && canMoveForward)
+                || (Input.GetKey(KeyCode.DownArrow) && canMoveBackwards)
+                || (Input.GetKey(KeyCode.LeftArrow) && canMoveLeft)
+                || (Input.GetKey(KeyCode.RightArrow) && canMoveRight)
+            )
+            && !isHopping
+            && canJump
+        )
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+                playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z + 5));
+            else if (Input.GetKey(KeyCode.DownArrow))
+                playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z - 5));
+            else if (Input.GetKey(KeyCode.LeftArrow))
+                playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x - 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
+            else
+                playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x + 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
+
             anim.SetBool("isPreparingHop", true);
+        }
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward && canJump)
         {
@@ -67,8 +88,6 @@ public class Player : MonoBehaviour
             GameManager.Instance.CanSpawnTerrain();
 
             isHopping = true;
-
-            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z + 5));
 
             anim.SetTrigger("hopTrigger");
 
@@ -86,8 +105,6 @@ public class Player : MonoBehaviour
 
             isHopping = true;
 
-            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x - 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
-
             anim.SetTrigger("hopTrigger");
 
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x - moveOnX), transform.position.y, transform.position.z);
@@ -101,8 +118,6 @@ public class Player : MonoBehaviour
             numberOfSteps++;
 
             isHopping = true;
-
-            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z - 5));
 
             anim.SetTrigger("hopTrigger");
 
@@ -119,9 +134,6 @@ public class Player : MonoBehaviour
 
             isHopping = true;
 
-            playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x + 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
-
-            
             anim.SetTrigger("hopTrigger");
 
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x + moveOnX), transform.position.y, transform.position.z);

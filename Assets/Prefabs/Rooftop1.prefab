@@ -106,7 +106,7 @@ MonoBehaviour:
   - {fileID: 6106338235359461179, guid: a071ff9c7426f48449f937d806652262, type: 3}
   - {fileID: 1592300327952787888, guid: 96c88e0ec31e2ec4991ca814de6c47e2, type: 3}
   - {fileID: 4936498024672386968, guid: 2c270841247e3c14c9652e707aa5c3df, type: 3}
-  minNumberOfObstacles: 2
+  minNumberOfObstacles: 0
   maxNumberOfObstacles: 4
 --- !u!1 &8507312916519126218
 GameObject:

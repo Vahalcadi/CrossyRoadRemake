@@ -163,18 +163,14 @@ public class GameManager : MonoBehaviour
         if (isPaused && !isOver)
         {
             pauseMenu.SetActive(false);
-            buttonRestart.SetActive(true);
             buttonResume.SetActive(true);
-            buttonResetHighScore.SetActive(true);
 
             uiEscInfo.SetActive(false);
         }
         else
         {
             pauseMenu.SetActive(true);
-            buttonRestart.SetActive(false);
             buttonResume.SetActive(false);
-            buttonResetHighScore.SetActive(false);
 
             uiEscInfo.SetActive(true);
         }

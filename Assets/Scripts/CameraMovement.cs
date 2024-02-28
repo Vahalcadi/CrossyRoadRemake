@@ -10,6 +10,9 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float cameraScrollingOnPlayerMovement;
 
+    [Header("When player is death")]
+    [SerializeField] KillerDrone killerDrone;
+
     private bool activeCoroutine;
 
     private void Awake()
@@ -21,6 +24,12 @@ public class CameraMovement : MonoBehaviour
         if (player != null && player.hasMoved)
         {
             StartCoroutine(Move());
+        }
+        if (killerDrone.cameraOnPlayer)
+        {
+            StopCoroutine(Move());
+            transform.parent = playerTransform;
+            transform.position = new Vector3((killerDrone.transform.position.x + 2), (killerDrone.transform.position.y + 5), (killerDrone.transform.position.z - 5));
         }
     }
 

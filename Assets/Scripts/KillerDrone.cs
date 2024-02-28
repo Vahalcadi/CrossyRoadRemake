@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
 
 public class KillerDrone : MonoBehaviour
@@ -8,6 +6,7 @@ public class KillerDrone : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private float maxTimeTillDeathTimer;
     [SerializeField] private float speed;
+    public bool cameraOnPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +32,15 @@ public class KillerDrone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
+            cameraOnPlayer = true;
             StartCoroutine(KillPlayer());
+        }
     }
 
     private IEnumerator KillPlayer()
     {
+
         yield return new WaitForSeconds(.5f);
         GameManager.Instance.UpdateGamePause();
         GameManager.Instance.GameOverMenu();

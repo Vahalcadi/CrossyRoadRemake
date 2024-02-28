@@ -62,6 +62,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5570021062431023308}
+  - component: {fileID: 5657776088992435276}
   m_Layer: 7
   m_Name: Rooftop3
   m_TagString: Untagged
@@ -87,6 +88,26 @@ Transform:
   - {fileID: 3181826014370393730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5657776088992435276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411571413652193563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5432593bf6a4d47b6dbb6f7fb1c1d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 3346728007018272309, guid: e42107056d6598e4f86dee5c425c0f52, type: 3}
+  - {fileID: 6106338235359461179, guid: a071ff9c7426f48449f937d806652262, type: 3}
+  - {fileID: 1592300327952787888, guid: 96c88e0ec31e2ec4991ca814de6c47e2, type: 3}
+  - {fileID: 4936498024672386968, guid: 2c270841247e3c14c9652e707aa5c3df, type: 3}
+  - {fileID: 8678473246788736939, guid: 2cc0adf45f0f3eb4b941737aa16f3fe2, type: 3}
+  minNumberOfObstacles: 2
+  maxNumberOfObstacles: 4
 --- !u!1 &8507312916519126218
 GameObject:
   m_ObjectHideFlags: 0

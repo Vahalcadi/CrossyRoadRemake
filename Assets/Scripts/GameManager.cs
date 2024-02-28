@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         {
             scoreShowGameObject.SetActive(true);
         }
-        if (player.transform.position.z > score - 3)
+        if (player.transform.position.z > score)
         {
             score++;
             scoreShow.text = score.ToString();

@@ -778,7 +778,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8913474464264321194}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1771556730}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d18fa7ac8257d6a48ac0cbc70f82023e, type: 3}
@@ -986,6 +986,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635472326}
   m_CullTransparentMesh: 1
+--- !u!1 &735121979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 735121981}
+  - component: {fileID: 735121980}
+  m_Layer: 0
+  m_Name: Gacha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &735121980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735121979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45c89367bafc1747a037e792d09be8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skins:
+  - {fileID: -2246632672022259623, guid: 7b3da040004275943aeca1a8b9e0c597, type: 3}
+  - {fileID: 4764562759265110629, guid: 5938837ce4a050a4d9390aa515aef9a8, type: 3}
+  - {fileID: -5495902117074765545, guid: 3a62c67cc41f64e4f8786ec726da5ab6, type: 3}
+  unlockedSkins:
+  - {fileID: -3879930808167537445, guid: f5fe3acc331795347a536cf5d1351099, type: 3}
+  player: {fileID: 1771556730}
+--- !u!4 &735121981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735121979}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.694108, y: 0.9517838, z: -3.9041982}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &759306828 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2870315881995719142, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
@@ -2297,6 +2348,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a16177f0abc32c47b0b121058e034f8, type: 3}
+--- !u!1 &1771556730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6549041922664524584, guid: f20df3d045e667e43a07424d8a298a7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8913474464264321194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958535957
 GameObject:
   m_ObjectHideFlags: 3
@@ -3144,6 +3201,7 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 8913474464264321194}
   - {fileID: 1282695629}
+  - {fileID: 735121981}
   - {fileID: 2052122284}
   - {fileID: 482776752}
   - {fileID: 8220024363126795276}

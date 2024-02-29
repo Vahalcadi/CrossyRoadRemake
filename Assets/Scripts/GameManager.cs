@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        coinCount = PlayerPrefs.GetInt("CoinsCollected");
+        coinsCollected.text = coinCount.ToString();
         highScoreShowGameObject.SetActive(false);
         scoreShowGameObject.SetActive(false);
         PlayerPrefs.GetInt("volumeOn");

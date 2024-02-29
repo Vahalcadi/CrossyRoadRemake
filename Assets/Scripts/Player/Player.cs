@@ -121,6 +121,9 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.DownArrow) && !isHopping && canMoveBackwards && canJump)
         {
+            if (transform.parent != null)
+                transform.parent = null;
+
             anim.SetBool("isPreparingHop", false);
             GameManager.Instance.SetDeathTimer(7);
 

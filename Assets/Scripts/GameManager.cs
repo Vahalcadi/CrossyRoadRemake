@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject buttonResume;
 
     [Header("UI")]
+    [SerializeField] TextMeshProUGUI timerPause;
     [SerializeField] GameObject buttonAudioOn;
     [SerializeField] GameObject buttonAudioOff;
     private bool buttonAudioVisible;
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject buttonPause;
     [SerializeField] TextMeshProUGUI coinsCollected;
     [NonSerialized] public int coinCount;
+
+    private bool started;
 
     [SerializeField] Transform newCamera;
 
@@ -95,7 +99,7 @@ public class GameManager : MonoBehaviour
             score++;
             scoreShow.text = score.ToString();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && started == true)
         {
             Pause();
         }
@@ -107,6 +111,7 @@ public class GameManager : MonoBehaviour
 
             buttonAudioVisible = false;
             ButtonAudioOnOff();
+            started = true;
 
             Time.timeScale = 1;
             canSpawnTerrain = false;
@@ -117,9 +122,15 @@ public class GameManager : MonoBehaviour
                 Destroy(instantiatedTerrains[0].gameObject);
                 instantiatedTerrains.RemoveAt(0);
             }
-
             count++;
         }
+        //if (player.transform.position.y <= -1)
+        //{
+        //    isOver = true;
+        //    score = 0;
+        //    Time.timeScale = 0;
+        //    GameOverMenu();
+        //}
     }
     private void LateUpdate()
     {
@@ -150,7 +161,6 @@ public class GameManager : MonoBehaviour
         }
 
         isOver = false;
-        Time.timeScale = 1;
 
         SceneManager.LoadScene(1);
     }
@@ -160,12 +170,17 @@ public class GameManager : MonoBehaviour
     {
         if (player.transform.position.z + 4 < newCamera.transform.position.z)
         {
-            isOver = true;
-            score = 0;
-            Time.timeScale = 0;
-            GameOverMenu();
+            GameOver();
         }
     }
+
+    public void GameOver()
+    {
+        isOver = true;
+        score = 0;
+        GameOverMenu();
+    }
+
     public void UpdateGamePause()
     {
         if (isPaused && !isOver)
@@ -174,7 +189,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
+            StartCoroutine(TimerPause());
         }
     }
     private void ResuneMenu()
@@ -198,6 +213,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isOver)
         {
+
             isPaused = !isPaused;
             ResuneMenu();
             UpdateGamePause();
@@ -299,5 +315,18 @@ public class GameManager : MonoBehaviour
             buttonAudioOn.SetActive(false);
         }
         PlayerPrefs.Save();
+    }
+    private IEnumerator TimerPause()
+    {
+        timerPause.gameObject.SetActive(true);
+        timerPause.text = "3";
+        yield return new WaitForSecondsRealtime(1f);
+        timerPause.text = "2";
+        yield return new WaitForSecondsRealtime(1f);
+        timerPause.text = "1";
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1;
+        timerPause.gameObject.SetActive(false);
+
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6772683952277887110}
   m_Layer: 6
   m_Name: Wall1
-  m_TagString: Untagged
+  m_TagString: RiverWalls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 5611553954449944439}
   m_Layer: 6
   m_Name: Wall2
-  m_TagString: Untagged
+  m_TagString: RiverWalls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

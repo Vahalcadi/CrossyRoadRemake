@@ -21,11 +21,11 @@ public class CameraMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (player != null && player.hasMoved)
+        if (player != null && player.hasMoved && !GameManager.Instance.GetIsOver())
         {
             StartCoroutine(Move());
         }
-        if (playerGameOver.isDead)
+        else if (playerGameOver.isDead)
         {
             StopCoroutine(Move());
             //transform.parent = playerTransform;

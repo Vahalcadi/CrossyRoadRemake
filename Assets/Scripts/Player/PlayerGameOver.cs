@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class PlayerGameOver : MonoBehaviour
 {
+
     [NonSerialized] public bool isDead;
     private void OnTriggerEnter(Collider other)
     {
         if (!isDead && other.gameObject.CompareTag("Vehicle"))
             GameOver();
+        if (other.CompareTag("RiverWalls"))
+        {
+            GameOver();
+            isDead = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -18,10 +24,9 @@ public class PlayerGameOver : MonoBehaviour
     private void GameOver()
     {
         isDead = true;
-        
+
         GetComponent<Animator>().SetTrigger("deathTrigger");
         GameManager.Instance.GameOverMenu();
         GameManager.Instance.IsOverSetTrue();
-        
     }
 }

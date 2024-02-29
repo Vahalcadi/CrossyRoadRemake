@@ -32,6 +32,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.K))
+            Gacha.Instance.EquipRandomSkin();
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameManager.Instance.coinCount = 100;
+            Gacha.Instance.UnlockSkin();
+        }
+
         canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, whatIsWall);
         canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, whatIsWall);
         canMoveLeft = !Physics.Raycast(transform.position, Vector3.left, moveOnX, whatIsWall);

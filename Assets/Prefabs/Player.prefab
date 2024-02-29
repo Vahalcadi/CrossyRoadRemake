@@ -81,6 +81,12 @@ MonoBehaviour:
   playerMesh: {fileID: 1903153400761995536}
   hasMoved: 0
   isHopping: 0
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!65 &5647013418907442646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -100,8 +106,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.63846767, y: 1.3757555, z: 0.44011593}
-  m_Center: {x: -0.003071189, y: 0.177616, z: 0.008830786}
+  m_Size: {x: 0.5, y: 1.5, z: 0.5}
+  m_Center: {x: 0, y: 0.22, z: 0}
 --- !u!95 &1767125529109315869
 Animator:
   serializedVersion: 5
@@ -193,6 +199,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f5fe3acc331795347a536cf5d1351099,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f5fe3acc331795347a536cf5d1351099,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8393227cdedb264da90d6b3addb973c, type: 2}
+    - target: {fileID: -7511558181221131132, guid: f5fe3acc331795347a536cf5d1351099,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b0dd9ac261313b4a95941431791b180, type: 2}
+    - target: {fileID: -5754084199372789682, guid: f5fe3acc331795347a536cf5d1351099,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7671256029229259687, guid: e719ace8e564dbf4891cc013dfd59360,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: f5fe3acc331795347a536cf5d1351099,
         type: 3}
       propertyPath: m_Name

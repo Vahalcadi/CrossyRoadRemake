@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonRestart;
     [SerializeField] GameObject buttonResume;
+    [SerializeField] Button buttonQuit;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI timerPause;
@@ -222,6 +224,10 @@ public class GameManager : MonoBehaviour
             ResuneMenu();
             UpdateGamePause();
         }
+        else if (buttonQuit.gameObject.activeSelf == false)
+            buttonQuit.gameObject.SetActive(true);
+        else
+            buttonQuit.gameObject.SetActive(false);
     }
     public void GameOverMenu()
     {
@@ -271,7 +277,6 @@ public class GameManager : MonoBehaviour
     {
         //buttonPause.SetActive(true);
         uiEscInfo.SetActive(false);
-        buttonPause.SetActive(false);
     }
 
     public void CollectCoin()
@@ -329,5 +334,10 @@ public class GameManager : MonoBehaviour
         onPauseMenu = false;
         timerPause.gameObject.SetActive(false);
 
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

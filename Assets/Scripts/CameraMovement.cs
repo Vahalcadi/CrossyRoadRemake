@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
 
     [Header("When player is death")]
     [SerializeField] KillerDrone killerDrone;
+    private bool isGrabbed = true;
 
     private PlayerGameOver playerGameOver;
     private bool activeCoroutine;
@@ -25,11 +26,12 @@ public class CameraMovement : MonoBehaviour
         {
             StartCoroutine(Move());
         }
-        else if (playerGameOver.isDead)
+        else if (killerDrone.transform.position.x <= 4 && isGrabbed == true)
         {
+            transform.position = new Vector3(2, player.transform.position.y + 5, player.transform.position.z - 5);
             StopCoroutine(Move());
             //transform.parent = playerTransform;
-            transform.position = new Vector3(player.transform.position.x + 2, player.transform.position.y + 5, player.transform.position.z - 5);
+            isGrabbed = false;
         }
     }
 

@@ -7,6 +7,7 @@ public class KillerDrone : MonoBehaviour
     [SerializeField] private float maxTimeTillDeathTimer;
     [SerializeField] private float speed;
     public bool killPlayer;
+    private bool playerDrag;
 
     private PlayerGameOver playerGameOver;
     // Start is called before the first frame update
@@ -21,14 +22,18 @@ public class KillerDrone : MonoBehaviour
     {
         GameManager.Instance.SetDeathTimer(GameManager.Instance.GetDeathTimer() - Time.deltaTime);
 
-        if (!playerGameOver.isDead && player.numberOfSteps >= 4 || (GameManager.Instance.GetDeathTimer() <= 0 && player.hasMoved))
+        if (playerDrag == false && (!playerGameOver.isDead && player.numberOfSteps >= 4 || (GameManager.Instance.GetDeathTimer() <= 0 && player.hasMoved)))
         {
             player.canMove = false;
             playerGameOver.isDead = true;
             transform.LookAt(player.transform.position);
-            
+
             killPlayer = true;
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
+        if (playerDrag == true)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(-8, 6, transform.position.z), speed * Time.deltaTime);
         }
     }
 
@@ -36,6 +41,7 @@ public class KillerDrone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            DragPlayer();
             StartCoroutine(KillPlayer());
         }
     }
@@ -46,5 +52,16 @@ public class KillerDrone : MonoBehaviour
         GameManager.Instance.GameOverMenu();
         GameManager.Instance.IsOverSetTrue();
         playerGameOver.isDead = false;
+    }
+    private void DragPlayer()
+    {
+        player.transform.parent = transform;
+        player.gameObject.GetComponent<BoxCollider>().enabled = false;
+        player.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        playerDrag = true;
+    }
+    public bool GetPlayerDrag()
+    {
+        return playerDrag;
     }
 }

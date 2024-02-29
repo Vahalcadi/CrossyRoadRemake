@@ -19,18 +19,12 @@ public class ObstacleSpawner : MonoBehaviour
             GenerateObstacle();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void GenerateObstacle()
     {
         CheckExtractedPosition();
         GameObject obstacle = obstacles[Random.Range(0, obstacles.Count)];
         Vector3 position = new Vector3(randomPosition, transform.position.y + obstacle.transform.position.y,transform.position.z);
-        Instantiate(obstacle, position, Quaternion.identity);
+        Instantiate(obstacle, position, obstacle.transform.rotation);
     }
 
     private void CheckExtractedPosition()

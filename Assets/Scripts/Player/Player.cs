@@ -18,10 +18,10 @@ public class Player : MonoBehaviour
     private bool canMoveBackwards;
     private bool canMoveLeft;
     private bool canMoveRight;
-    private bool canJump;
+    [SerializeField] private bool canJump;
 
     private float logDir;
-    [NonSerialized] public bool canMove = true;
+    [SerializeField] public bool canMove = true;
     //private bool walkOnLog;
 
     // Start is called before the first frame update
@@ -56,16 +56,20 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        
         if (!canMove || GameManager.Instance.GetIsOver())
+        {
+            Debug.LogWarning("return move");
             return;
+        }
 
         if
         (
             (
-                (Input.GetKey(KeyCode.UpArrow) && canMoveForward)
-                || (Input.GetKey(KeyCode.DownArrow) && canMoveBackwards)
-                || (Input.GetKey(KeyCode.LeftArrow) && canMoveLeft)
-                || (Input.GetKey(KeyCode.RightArrow) && canMoveRight)
+                ((Input.GetKey(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.UpArrow)) && canMoveForward)
+                || ((Input.GetKey(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.DownArrow)) && canMoveBackwards)
+                || ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.LeftArrow)) && canMoveLeft)
+                || ((Input.GetKey(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.RightArrow)) && canMoveRight)
             )
             && !isHopping
             && canJump
@@ -77,16 +81,18 @@ public class Player : MonoBehaviour
                 playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x, playerMesh.transform.position.y, playerMesh.transform.position.z - 5));
             else if (Input.GetKey(KeyCode.LeftArrow))
                 playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x - 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
-            else
+            else if (Input.GetKey(KeyCode.RightArrow))
                 playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x + 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
 
             anim.SetBool("isPreparingHop", true);
+            Debug.Log("preparing hop true");
         }
+        else if(/*isHopping*/ /*|| */!canJump)
+            Debug.LogWarning("Cannot move or jump");
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward && canJump)
         {
-            anim.SetBool("isPreparingHop", false);
-
+            
             GameManager.Instance.SetDeathTimer(7);
 
             if (transform.parent != null)
@@ -97,8 +103,9 @@ public class Player : MonoBehaviour
             GameManager.Instance.CanSpawnTerrain();
 
             isHopping = true;
+            Debug.Log($"isHopping:{isHopping}");
 
-            anim.SetTrigger("hopTrigger");
+            Jump();
 
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z + moveOnZ);
             hasMoved = true;
@@ -106,15 +113,16 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftArrow) && !isHopping && canMoveLeft && canJump)
         {
-            anim.SetBool("isPreparingHop", false);
+            
 
             GameManager.Instance.SetDeathTimer(7);
 
             numberOfSteps = 0;
 
             isHopping = true;
+            Debug.Log($"isHopping:{isHopping}");
 
-            anim.SetTrigger("hopTrigger");
+            Jump();
 
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x - moveOnX), transform.position.y, transform.position.z);
             hasMoved = true;
@@ -124,29 +132,29 @@ public class Player : MonoBehaviour
             if (transform.parent != null)
                 transform.parent = null;
 
-            anim.SetBool("isPreparingHop", false);
+           
             GameManager.Instance.SetDeathTimer(7);
 
             numberOfSteps++;
 
             isHopping = true;
+            Debug.Log($"isHopping:{isHopping}");
 
-            anim.SetTrigger("hopTrigger");
+            Jump();
 
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.position.y, transform.position.z - moveOnZ);
             hasMoved = true;
         }
         if (Input.GetKeyUp(KeyCode.RightArrow) && !isHopping && canMoveRight && canJump)
         {
-            anim.SetBool("isPreparingHop", false);
 
             GameManager.Instance.SetDeathTimer(7);
 
             numberOfSteps = 0;
 
             isHopping = true;
-
-            anim.SetTrigger("hopTrigger");
+            Debug.Log($"isHopping:{isHopping}");
+            Jump();
 
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x + moveOnX), transform.position.y, transform.position.z);
             hasMoved = true;
@@ -172,6 +180,31 @@ public class Player : MonoBehaviour
         canMove = false;
         yield return new WaitForSeconds(.5f);
         canMove = true;
+        isHopping = false;
+        Debug.Log($"isHopping:{isHopping}");
     }
-    public void EndHop() => isHopping = false;
+
+    private void Jump()
+    {
+        anim.ResetTrigger("toIdle");
+
+        anim.SetBool("isPreparingHop", false);
+        Debug.Log("preparing hop false");
+        anim.SetTrigger("hopTrigger");
+
+        Debug.Log("hopTrigger");
+
+        StartCoroutine(EndHop());
+
+    }
+    public IEnumerator EndHop()
+    {
+        yield return new WaitForSeconds(.121f);
+        anim.SetTrigger("toIdle");
+        yield return null;
+
+        isHopping = false;
+        
+        Debug.Log($"isHopping:{isHopping}");
+    }
 }

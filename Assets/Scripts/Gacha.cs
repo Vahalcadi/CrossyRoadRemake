@@ -22,6 +22,9 @@ public class Gacha : MonoBehaviour
 
     private void Start()
     {
+        if (unlockedSkins.Count == 0)
+            return;
+
         int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
         int unlockedSkinsCount = PlayerPrefs.GetInt("unlockedSkins");
 

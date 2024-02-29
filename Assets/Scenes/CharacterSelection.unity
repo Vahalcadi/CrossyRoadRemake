@@ -1173,7 +1173,8 @@ MonoBehaviour:
   - {fileID: 1113684051}
   - {fileID: 542813646}
   - {fileID: 1853116281}
-  unlockedCharacters: []
+  unlockedCharacters:
+  - {fileID: 296328748}
 --- !u!4 &1793157528
 Transform:
   m_ObjectHideFlags: 0

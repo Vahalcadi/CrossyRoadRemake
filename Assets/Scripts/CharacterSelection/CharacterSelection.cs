@@ -34,7 +34,7 @@ public class CharacterSelection : MonoBehaviour
         if (selectedCharacter < 0)
             selectedCharacter += unlockedCharacters.Count;
 
-        unlockedCharacters[selectedCharacter].SetActive(false);
+        unlockedCharacters[selectedCharacter].SetActive(true);
     }
 
     public void StartGame()

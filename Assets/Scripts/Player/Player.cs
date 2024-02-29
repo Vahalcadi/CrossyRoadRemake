@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Delete))
+            PlayerPrefs.DeleteAll();
 
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -58,10 +60,8 @@ public class Player : MonoBehaviour
     {
         
         if (!canMove || GameManager.Instance.GetIsOver())
-        {
-            Debug.LogWarning("return move");
             return;
-        }
+        
 
         if
         (
@@ -85,10 +85,7 @@ public class Player : MonoBehaviour
                 playerMesh.transform.LookAt(new Vector3(playerMesh.transform.position.x + 5, playerMesh.transform.position.y, playerMesh.transform.position.z));
 
             anim.SetBool("isPreparingHop", true);
-            Debug.Log("preparing hop true");
         }
-        else if(/*isHopping*/ /*|| */!canJump)
-            Debug.LogWarning("Cannot move or jump");
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && !isHopping && canMoveForward && canJump)
         {

@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject buttonResume;
 
     [Header("UI")]
+    [SerializeField] GameObject buttonAudioOn;
+    [SerializeField] GameObject buttonAudioOff;
+    private bool buttonAudioVisible;
+    private bool volumeOn;
+    [SerializeField] GameObject controlsInformations;
+    [SerializeField] GameObject buttonCharacterSelection;
     [SerializeField] GameObject uiEscInfo;
     [SerializeField] GameObject buttonPause;
     [SerializeField] TextMeshProUGUI coinsCollected;
@@ -55,9 +61,13 @@ public class GameManager : MonoBehaviour
     {
         highScoreShowGameObject.SetActive(false);
         scoreShowGameObject.SetActive(false);
+        PlayerPrefs.GetInt("volumeOn");
+        buttonAudioVisible = true;
+        ButtonAudioOnOff();
+        PlayerPrefs.Save();
+
         if (Instance != null)
             Destroy(Instance.gameObject);
-
         else
             Instance = this;
     }
@@ -92,6 +102,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && canSpawnTerrain && !isOver)
         {
+            controlsInformations.SetActive(false);
+            buttonCharacterSelection.SetActive(false);
+
+            buttonAudioVisible = false;
+            ButtonAudioOnOff();
+
             Time.timeScale = 1;
             canSpawnTerrain = false;
 
@@ -202,6 +218,9 @@ public class GameManager : MonoBehaviour
         }
         highScoreShow.text = "TOP " + highScore.ToString();
 
+        buttonAudioVisible = true;
+        ButtonAudioOnOff();
+        buttonCharacterSelection.SetActive(true);
         buttonRestart.SetActive(true);
         uiEscInfo.SetActive(false);
     }
@@ -253,5 +272,32 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void ButtonAudioOnOff()
+    {
+        if (buttonAudioVisible == true)
+        {
+            if (volumeOn == true)
+            {
+                PlayerPrefs.SetInt("volumeOn", 1);
+                buttonAudioOff.SetActive(false);
+                buttonAudioOn.SetActive(true);
+                volumeOn = false;
+            }
+            else
+            {
+                PlayerPrefs.SetInt("volumeOn", 0);
+                buttonAudioOff.SetActive(true);
+                buttonAudioOn.SetActive(false);
+                volumeOn = true;
+            }
+        }
+        else
+        {
+            buttonAudioOff.SetActive(false);
+            buttonAudioOn.SetActive(false);
+        }
+        PlayerPrefs.Save();
     }
 }

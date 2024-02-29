@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [NonSerialized] public int coinCount;
 
     private bool started;
+    private bool onPauseMenu;
 
     [SerializeField] Transform newCamera;
 
@@ -99,8 +100,9 @@ public class GameManager : MonoBehaviour
             score++;
             scoreShow.text = score.ToString();
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && started == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && started == true && onPauseMenu == false)
         {
+            onPauseMenu = true;
             Pause();
         }
 
@@ -108,6 +110,7 @@ public class GameManager : MonoBehaviour
         {
             controlsInformations.SetActive(false);
             buttonCharacterSelection.SetActive(false);
+            buttonPause.SetActive(true);
 
             buttonAudioVisible = false;
             ButtonAudioOnOff();
@@ -156,13 +159,14 @@ public class GameManager : MonoBehaviour
     {
         if (score > highScore)
         {
+            uiEscInfo.SetActive(false);
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
         }
 
         isOver = false;
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MainScene");
     }
 
     public void CanSpawnTerrain() => canSpawnTerrain = true;
@@ -211,7 +215,7 @@ public class GameManager : MonoBehaviour
     }
     public void Pause()
     {
-        if (!isOver)
+        if (!isOver && started == true)
         {
 
             isPaused = !isPaused;
@@ -266,7 +270,8 @@ public class GameManager : MonoBehaviour
     public void UiConfigAtStart()
     {
         //buttonPause.SetActive(true);
-        uiEscInfo.SetActive(true);
+        uiEscInfo.SetActive(false);
+        buttonPause.SetActive(false);
     }
 
     public void CollectCoin()
@@ -284,11 +289,6 @@ public class GameManager : MonoBehaviour
 
     public float GetDeathTimer() => deathTimer;
     public void SetDeathTimer(float value) => deathTimer = value;
-
-    public void ReturnToMainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
 
     public void ButtonAudioOnOff()
     {
@@ -326,6 +326,7 @@ public class GameManager : MonoBehaviour
         timerPause.text = "1";
         yield return new WaitForSecondsRealtime(1f);
         Time.timeScale = 1;
+        onPauseMenu = false;
         timerPause.gameObject.SetActive(false);
 
     }

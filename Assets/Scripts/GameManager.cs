@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     private bool volumeOn;
     [SerializeField] GameObject controlsInformations;
     [SerializeField] GameObject buttonCharacterSelection;
-    [SerializeField] GameObject uiEscInfo;
     [SerializeField] GameObject buttonPause;
     [SerializeField] TextMeshProUGUI coinsCollected;
     [NonSerialized] public int coinCount;
@@ -81,7 +80,6 @@ public class GameManager : MonoBehaviour
     //PlayerPrefs.SetInt("HighScore", highScore)
     void Start()
     {
-        UiConfigAtStart();
         //isPaused = false;
         SavedHighScore();
 
@@ -161,7 +159,6 @@ public class GameManager : MonoBehaviour
     {
         if (score > highScore)
         {
-            uiEscInfo.SetActive(false);
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
         }
@@ -204,15 +201,11 @@ public class GameManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
             buttonResume.SetActive(true);
-
-            uiEscInfo.SetActive(false);
         }
         else
         {
             pauseMenu.SetActive(true);
             buttonResume.SetActive(false);
-
-            uiEscInfo.SetActive(true);
         }
     }
     public void Pause()
@@ -248,7 +241,6 @@ public class GameManager : MonoBehaviour
         ButtonAudioOnOff();
         buttonCharacterSelection.SetActive(true);
         buttonRestart.SetActive(true);
-        uiEscInfo.SetActive(false);
     }
     public void IsOverSetTrue()
     {
@@ -272,11 +264,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("HighScore", highScore);
         PlayerPrefs.Save();
         Debug.Log(highScore);
-    }
-    public void UiConfigAtStart()
-    {
-        //buttonPause.SetActive(true);
-        uiEscInfo.SetActive(false);
     }
 
     public void CollectCoin()

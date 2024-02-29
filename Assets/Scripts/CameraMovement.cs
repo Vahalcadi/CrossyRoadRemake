@@ -25,10 +25,10 @@ public class CameraMovement : MonoBehaviour
         {
             StartCoroutine(Move());
         }
-        if (killerDrone.killPlayer)
+        if (playerGameOver.isDead)
         {
             StopCoroutine(Move());
-            transform.parent = playerTransform;
+            //transform.parent = playerTransform;
             transform.position = new Vector3(player.transform.position.x + 2, player.transform.position.y + 5, player.transform.position.z - 5);
         }
     }

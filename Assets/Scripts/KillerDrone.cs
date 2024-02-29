@@ -21,7 +21,7 @@ public class KillerDrone : MonoBehaviour
     {
         GameManager.Instance.SetDeathTimer(GameManager.Instance.GetDeathTimer() - Time.deltaTime);
 
-        if (player.numberOfSteps >= 4 || (GameManager.Instance.GetDeathTimer() <= 0 && player.hasMoved))
+        if (!playerGameOver.isDead && player.numberOfSteps >= 4 || (GameManager.Instance.GetDeathTimer() <= 0 && player.hasMoved))
         {
             player.canMove = false;
             playerGameOver.isDead = true;
@@ -43,10 +43,8 @@ public class KillerDrone : MonoBehaviour
     public IEnumerator KillPlayer()
     {
         yield return new WaitForSeconds(.5f);
-        GameManager.Instance.UpdateGamePause();
         GameManager.Instance.GameOverMenu();
         GameManager.Instance.IsOverSetTrue();
         playerGameOver.isDead = false;
-        Time.timeScale = 0;
     }
 }

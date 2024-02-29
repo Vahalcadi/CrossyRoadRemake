@@ -17,10 +17,11 @@ public class PlayerGameOver : MonoBehaviour
     }
     private void GameOver()
     {
+        isDead = true;
+        
         GetComponent<Animator>().SetTrigger("deathTrigger");
-        GameManager.Instance.UpdateGamePause();
         GameManager.Instance.GameOverMenu();
         GameManager.Instance.IsOverSetTrue();
-        Time.timeScale = 0;
+        
     }
 }

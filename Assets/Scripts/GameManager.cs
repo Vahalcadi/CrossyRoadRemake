@@ -207,7 +207,6 @@ public class GameManager : MonoBehaviour
     }
     public void IsOverSetTrue()
     {
-
         highScoreShowGameObject.SetActive(true);
         isOver = true;
     }

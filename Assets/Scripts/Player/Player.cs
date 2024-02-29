@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        StartCoroutine(EnableMovement());
     }
 
     // Update is called once per frame
@@ -164,5 +166,11 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - moveOnZ, transform.position.z));
     }
 
+    private IEnumerator EnableMovement()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(.5f);
+        canMove = true;
+    }
     public void EndHop() => isHopping = false;
 }

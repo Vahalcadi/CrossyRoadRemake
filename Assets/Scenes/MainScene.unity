@@ -1121,7 +1121,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8220024363126795276}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1221620635}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c2802e5bf1a0b4459f72082b64b8ddb, type: 3}
@@ -2020,6 +2020,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1221620635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4906424696690788807, guid: 5d6e5f0c977699e45bdec6a05bf36fa6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8220024363126795276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1282695628
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,10 +4379,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6073575131557086201, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: killerDrone
+      value: 
+      objectReference: {fileID: 1221620635}
     - target: {fileID: 6549041922664524584, guid: f20df3d045e667e43a07424d8a298a7b,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579537907919995060, guid: f20df3d045e667e43a07424d8a298a7b,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnTerrain()
     {
+
         random = UnityEngine.Random.Range(0, terrains.Count);
 
         instantiatedTerrains.Add(Instantiate(terrains[random], currentPos + terrains[random].transform.position, terrains[random].transform.rotation));

@@ -421,8 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicle: {fileID: 7378384482479203242, guid: 50c6694be36704744a8236477da42733, type: 3}
   spawnpoint: {fileID: 7029532644520845470}
-  minSpawnTime: 3
-  maxSpawnTime: 6
+  minSpawnTime: 5
+  maxSpawnTime: 10
   facingLeft: 0
   trainSignalAnimator: {fileID: 5767774290288100251}
 --- !u!4 &7989501201302982210 stripped

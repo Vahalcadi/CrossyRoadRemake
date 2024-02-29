@@ -20,9 +20,16 @@ public class KillerDrone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+
+        if (Input.GetKeyUp(KeyCode.UpArrow) && !GameManager.Instance.GetIsOver())
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+        }
+
         GameManager.Instance.SetDeathTimer(GameManager.Instance.GetDeathTimer() - Time.deltaTime);
 
-        if (playerDrag == false && (!playerGameOver.isDead && player.numberOfSteps >= 4 || (GameManager.Instance.GetDeathTimer() <= 0 && player.hasMoved)))
+        if (playerDrag == false && (player.numberOfSteps >= 4 || player.transform.position.z - Camera.main.transform.position.z <= 5 || (GameManager.Instance.GetDeathTimer() <= 0 && player.hasMoved)))
         {
             player.canMove = false;
             playerGameOver.isDead = true;
@@ -41,17 +48,17 @@ public class KillerDrone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            DragPlayer();
             StartCoroutine(KillPlayer());
+            DragPlayer();
         }
     }
 
     public IEnumerator KillPlayer()
     {
-        yield return new WaitForSeconds(.5f);
-        GameManager.Instance.GameOverMenu();
-        GameManager.Instance.IsOverSetTrue();
         playerGameOver.isDead = false;
+        yield return new WaitForSeconds(.5f);
+        GameManager.Instance.IsOverSetTrue();
+        GameManager.Instance.GameOverMenu();
     }
     private void DragPlayer()
     {

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerGameOver : MonoBehaviour
 {
-
     [NonSerialized] public bool isDead;
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +10,7 @@ public class PlayerGameOver : MonoBehaviour
             GameOver();
         if (other.CompareTag("RiverWalls"))
         {
-            GameOver();
+            GameOverWhitoutAnimation();
             isDead = false;
         }
     }
@@ -23,9 +22,13 @@ public class PlayerGameOver : MonoBehaviour
     }
     private void GameOver()
     {
-        isDead = true;
-
+        GameOverWhitoutAnimation();
         GetComponent<Animator>().SetTrigger("deathTrigger");
+
+    }
+    private void GameOverWhitoutAnimation()
+    {
+        isDead = true;
         GameManager.Instance.GameOverMenu();
         GameManager.Instance.IsOverSetTrue();
     }

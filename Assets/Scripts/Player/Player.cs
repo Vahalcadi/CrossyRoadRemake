@@ -34,8 +34,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-            Gacha.Instance.EquipRandomSkin();
 
         if (Input.GetKeyDown(KeyCode.L))
         {

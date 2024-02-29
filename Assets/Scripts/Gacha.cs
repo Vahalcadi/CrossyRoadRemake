@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gacha : MonoBehaviour
 {
@@ -19,14 +20,31 @@ public class Gacha : MonoBehaviour
             Instance = this;
     }
 
-    public void EquipRandomSkin()
+    private void Start()
     {
-        player.GetComponentInChildren<MeshFilter>().mesh = unlockedSkins[Random.Range(0, unlockedSkins.Count)];
+        int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+        int unlockedSkinsCount = PlayerPrefs.GetInt("unlockedSkins");
+
+        for (int i = 0; i < unlockedSkinsCount; i++)
+        {
+            unlockedSkins.Add(skins[i]);
+        }
+        for (int i = 0; i < unlockedSkins.Count; i++)
+        {
+            skins.Remove(unlockedSkins[i]);
+        }
+        player.GetComponentInChildren<MeshFilter>().mesh = unlockedSkins[selectedCharacter];
+    }
+
+    public void OpenSkinSelection()
+    {
+        PlayerPrefs.SetInt("unlockedSkins", unlockedSkins.Count);
+        SceneManager.LoadScene("CharacterSelection");
     }
 
     public void UnlockSkin()
     {
-        if (GameManager.Instance.coinCount < 100)
+        if (GameManager.Instance.coinCount < 100 || skins.Count <= 0)
             return;
 
         GameManager.Instance.coinCount -= 100;
@@ -34,9 +52,7 @@ public class Gacha : MonoBehaviour
         random = Random.Range(0, skins.Count);
 
         Mesh mesh = skins[random];
-
         unlockedSkins.Add(mesh);
-
         skins.Remove(mesh);
     }
 }

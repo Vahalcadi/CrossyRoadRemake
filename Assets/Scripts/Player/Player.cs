@@ -37,13 +37,6 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.C))
             PlayerPrefs.DeleteAll();
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            GameManager.Instance.coinCount = 100;
-            PlayerPrefs.SetInt("CoinsCollected", GameManager.Instance.coinCount = 100);
-
-            //Gacha.Instance.UnlockSkin();
-        }
 
         canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, whatIsWall);
         canMoveBackwards = !Physics.Raycast(transform.position, Vector3.back, moveOnZ, whatIsWall);

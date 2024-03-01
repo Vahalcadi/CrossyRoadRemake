@@ -243,7 +243,8 @@ MonoBehaviour:
   - {fileID: -2246632672022259623, guid: 7b3da040004275943aeca1a8b9e0c597, type: 3}
   - {fileID: 4764562759265110629, guid: 5938837ce4a050a4d9390aa515aef9a8, type: 3}
   - {fileID: 80799415086867247, guid: 3a62c67cc41f64e4f8786ec726da5ab6, type: 3}
-  unlockedSkins: []
+  unlockedSkins:
+  - {fileID: -7671256029229259687, guid: e719ace8e564dbf4891cc013dfd59360, type: 3}
   anim: {fileID: 90422829}
   player: {fileID: 6549041922664524584, guid: f20df3d045e667e43a07424d8a298a7b, type: 3}
 --- !u!1 &406040780

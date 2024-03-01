@@ -114,7 +114,11 @@ public class GameManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.L))
+        {
+            coinCount = 100;
+            PlayerPrefs.SetInt("CoinsCollected", coinCount);
             coinsCollected.text = $"{coinCount}";
+        }
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && canSpawnTerrain && !isOver)
         {

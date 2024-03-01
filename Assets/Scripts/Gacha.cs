@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ public class Gacha : MonoBehaviour
     private int random;
     public static Gacha Instance;
     private int coins;
+
+    private List<int> extractedIndexes = new List<int>();
 
     private void Awake()
     {
@@ -47,6 +50,8 @@ public class Gacha : MonoBehaviour
             ButtonPress();
         if (Input.GetKeyDown(KeyCode.K))
             coins = 100;
+        if (Input.GetKeyDown(KeyCode.C))
+            PlayerPrefs.DeleteAll();
 
     }
     public void ButtonPress()
@@ -63,15 +68,25 @@ public class Gacha : MonoBehaviour
         coins -= 100;
         PlayerPrefs.SetInt("CoinsCollected", coins);
 
-        random = Random.Range(1, skins.Count);
+        CheckExtractedIndexes();
 
-        Mesh mesh = skins[random];
-        unlockedSkins.Add(mesh);
+
+        unlockedSkins.Add(skins[random]);
         Debug.Log("giving skin");
 
+        PlayerPrefs.SetInt("unlockedSkins", unlockedSkins.Count);
+
         Instantiate(player, new Vector3(0,1, -1.71f), player.transform.rotation);
-        player.GetComponent<MeshFilter>().mesh = mesh;
+        player.GetComponentInChildren<MeshFilter>().mesh = unlockedSkins.Last();
     }
 
-  
+    private void CheckExtractedIndexes()
+    {
+        random = Random.Range(1, skins.Count);
+
+        if (extractedIndexes.Contains(random))
+            CheckExtractedIndexes();
+        else
+            extractedIndexes.Add(random);
+    }
 }

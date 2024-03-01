@@ -13,7 +13,10 @@ public class CharacterSelection : MonoBehaviour
     {
         int unlockedCharactersCount = PlayerPrefs.GetInt("unlockedSkins");
 
-        for (int i = 0; i < unlockedCharactersCount; i++)
+        if (unlockedCharactersCount == 1)
+            return;
+
+        for (int i = 1; i < unlockedCharactersCount; i++)
         {
             unlockedCharacters.Add(characters[i]);
         }
@@ -39,6 +42,7 @@ public class CharacterSelection : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerPrefs.SetInt("unlockedSkins", unlockedCharacters.Count);
         PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
         SceneManager.LoadScene("MainScene");
     }

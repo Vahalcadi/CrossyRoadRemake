@@ -34,13 +34,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Delete))
+        if(Input.GetKeyDown(KeyCode.C))
             PlayerPrefs.DeleteAll();
 
         if (Input.GetKeyDown(KeyCode.L))
         {
             GameManager.Instance.coinCount = 100;
-            Gacha.Instance.UnlockSkin();
+            PlayerPrefs.SetInt("CoinsCollected", GameManager.Instance.coinCount = 100);
+
+            //Gacha.Instance.UnlockSkin();
         }
 
         canMoveForward = !Physics.Raycast(transform.position, Vector3.forward, moveOnZ, whatIsWall);

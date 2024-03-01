@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject buttonCharacterSelection;
     [SerializeField] GameObject buttonPause;
     [SerializeField] TextMeshProUGUI coinsCollected;
+    [SerializeField] private Button gachaButton;
     [NonSerialized] public int coinCount;
 
     private bool started;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        gachaButton.gameObject.SetActive(false);
         coinCount = PlayerPrefs.GetInt("CoinsCollected");
         coinsCollected.text = coinCount.ToString();
         highScoreShowGameObject.SetActive(false);
@@ -82,6 +84,9 @@ public class GameManager : MonoBehaviour
     //PlayerPrefs.SetInt("HighScore", highScore)
     void Start()
     {
+        int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");
+        player.GetComponentInChildren<MeshFilter>().mesh = Gacha.Instance.skins[selectedCharacter];
+
         //isPaused = false;
         SavedHighScore();
 
@@ -107,6 +112,9 @@ public class GameManager : MonoBehaviour
             onPauseMenu = true;
             Pause();
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+            coinsCollected.text = $"{coinCount}";
 
         if (Input.GetKeyUp(KeyCode.UpArrow) && canSpawnTerrain && !isOver)
         {
@@ -227,8 +235,8 @@ public class GameManager : MonoBehaviour
     }
     public void GameOverMenu()
     {
-        /*if (coinCount >= 100)
-            Gacha.Instance.UnlockSkin();*/
+        if (coinCount >= 100)
+            gachaButton.gameObject.SetActive(true);
 
         CoinsSaveInformation();
 
@@ -324,6 +332,18 @@ public class GameManager : MonoBehaviour
         onPauseMenu = false;
         timerPause.gameObject.SetActive(false);
 
+    }
+
+    public void OpenSkinSelection()
+    {
+        PlayerPrefs.SetInt("unlockedSkins", Gacha.Instance.unlockedSkins.Count);
+        SceneManager.LoadScene("CharacterSelection");
+    }
+
+    public void OpenGacha()
+    {
+        PlayerPrefs.SetInt("unlockedSkins", Gacha.Instance.unlockedSkins.Count);
+        SceneManager.LoadScene("Gacha");
     }
 
     public void Quit()
